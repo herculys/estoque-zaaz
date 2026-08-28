@@ -1,0 +1,460 @@
+table f_Backlog
+	lineageTag: ed2ca948-ca05-4a8a-aeb0-11fcd99ce0f4
+
+	column 'Nº. Ordem Serviço'
+		dataType: string
+		lineageTag: 7cfc1903-7d97-4f2e-9926-57232c68d1b1
+		summarizeBy: none
+		sourceColumn: Nº. Ordem Serviço
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Identificação do Cliente'
+		dataType: int64
+		formatString: 0
+		lineageTag: b8180a1f-a640-4d57-83cc-e6151f30a7ce
+		summarizeBy: sum
+		sourceColumn: Identificação do Cliente
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Nº Cliente'
+		dataType: int64
+		formatString: 0
+		lineageTag: 74dd43be-f41d-454a-b24e-18bdacc4b289
+		summarizeBy: sum
+		sourceColumn: Nº Cliente
+
+		annotation SummarizationSetBy = Automatic
+
+	column Status
+		dataType: string
+		lineageTag: c861be01-f84b-470a-8bb5-263127f846bd
+		summarizeBy: none
+		sourceColumn: Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Tipo de Serviço'
+		dataType: string
+		lineageTag: 63612e11-4f36-4ccb-96f5-16ded72b4bd5
+		summarizeBy: none
+		sourceColumn: Tipo de Serviço
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Grupo Área'
+		dataType: string
+		lineageTag: b0c59083-78a4-4ca7-b5bd-a562412a0145
+		summarizeBy: none
+		sourceColumn: Grupo Área
+
+		annotation SummarizationSetBy = Automatic
+
+	column Área
+		dataType: string
+		lineageTag: f9ce7639-8e6f-4e3a-b9e8-468f4fe6c3f4
+		summarizeBy: none
+		sourceColumn: Área
+
+		annotation SummarizationSetBy = Automatic
+
+	column Localidade
+		dataType: string
+		lineageTag: 6b6cb26f-2d89-4c63-8a4e-684699acaf96
+		summarizeBy: none
+		sourceColumn: Localidade
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cliente
+		dataType: string
+		lineageTag: 562f092c-6388-453c-baca-98607d1ad2e5
+		summarizeBy: none
+		sourceColumn: Cliente
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cidade
+		dataType: string
+		lineageTag: a80435de-0dae-4379-abda-82b3de677957
+		summarizeBy: none
+		sourceColumn: Cidade
+
+		annotation SummarizationSetBy = Automatic
+
+	column UF
+		dataType: string
+		lineageTag: d050fade-dd83-4a78-a790-0ab66c917675
+		summarizeBy: none
+		sourceColumn: UF
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Data/Hora Criação'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: f9054eb6-440b-422a-8f1c-7f7c540e05a2
+		summarizeBy: none
+		sourceColumn: Data/Hora Criação
+
+		variation Variation
+			isDefault
+			relationship: 7d0f249e-57c7-428d-9c29-e15745a374f0
+			defaultHierarchy: LocalDateTable_4270335a-3bc8-4c25-9f9a-73b8d56222c9.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Contrato
+		dataType: string
+		lineageTag: 3158517d-88e3-4bbc-a6e8-6362ff28667f
+		summarizeBy: none
+		sourceColumn: Contrato
+
+		annotation SummarizationSetBy = Automatic
+
+	column Projeto
+		dataType: string
+		lineageTag: 2bc6e2eb-3316-4ab8-b3cf-3827159eafcf
+		summarizeBy: none
+		sourceColumn: Projeto
+
+		annotation SummarizationSetBy = Automatic
+
+	column Natureza
+		dataType: string
+		lineageTag: fa7489aa-7a50-49dc-a0d2-9982d1809335
+		summarizeBy: none
+		sourceColumn: Natureza
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Data Instalação Equip.' = ```
+			VAR IDContrato = f_Backlog[Nº Cliente]
+			VAR MaxData = 
+			    CALCULATE(
+			        MAX('f_MateriaisAplicados'[Data Aplicação]),
+			        FILTER(
+			            ALL('f_MateriaisAplicados'),
+			            'f_MateriaisAplicados'[Nº Cliente] = IDContrato
+			        )
+			    )
+			VAR MateriaisComSerie =
+			    CALCULATETABLE(
+			        SELECTCOLUMNS(
+			            'f_MateriaisAplicados',
+			            "SerieText", TRIM('f_MateriaisAplicados'[N° Serie])
+			        ),
+			        'f_MateriaisAplicados'[Nº Cliente] = IDContrato,
+			        'f_MateriaisAplicados'[Data Aplicação] = MaxData
+			    )
+			VAR SeriesValidas =
+			    GENERATE(
+			        MateriaisComSerie,
+			        VAR SeriePath = SUBSTITUTE(SUBSTITUTE([SerieText], ", ", "|"), ",", "|")
+			        VAR QtdeTokens = PATHLENGTH(SeriePath)
+			        RETURN
+			            FILTER(
+			                ADDCOLUMNS(
+			                    GENERATESERIES(1, QtdeTokens),
+			                    "SerieReal", TRIM(PATHITEM(SeriePath, [Value], TEXT))
+			                ),
+			                [SerieReal] <> "" && [SerieReal] <> "-"
+			            )
+			    )
+			RETURN
+			    IF(
+			        COUNTROWS(SeriesValidas) > 0,
+			        MaxData,
+			        BLANK()
+			    )
+			```
+		lineageTag: 2e52125f-2e3a-4a4e-8daf-b00b4bd91561
+		summarizeBy: none
+
+		variation Variation
+			isDefault
+			relationship: 804e86ef-3fe0-49a7-a28e-44ea5135a844
+			defaultHierarchy: LocalDateTable_3214fae5-33ba-45e3-83fc-15e9f655a9b5.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'OS Instalação Equip.' = ```
+			VAR IDContrato = f_Backlog[Nº Cliente]
+			VAR MaxData = 
+			    CALCULATE(
+			        MAX('f_MateriaisAplicados'[Data Aplicação]),
+			        FILTER(
+			            ALL('f_MateriaisAplicados'),
+			            'f_MateriaisAplicados'[Nº Cliente] = IDContrato
+			        )
+			    )
+			VAR MateriaisComSerie =
+			    CALCULATETABLE(
+			        SELECTCOLUMNS(
+			            'f_MateriaisAplicados',
+			            "OS", 'f_MateriaisAplicados'[OS],
+			            "SerieText", TRIM('f_MateriaisAplicados'[N° Serie])
+			        ),
+			        'f_MateriaisAplicados'[Nº Cliente] = IDContrato,
+			        'f_MateriaisAplicados'[Data Aplicação] = MaxData
+			    )
+			VAR SeriesValidas =
+			    GENERATE(
+			        MateriaisComSerie,
+			        VAR SeriePath = SUBSTITUTE(SUBSTITUTE([SerieText], ", ", "|"), ",", "|")
+			        VAR QtdeTokens = PATHLENGTH(SeriePath)
+			        RETURN
+			            FILTER(
+			                ADDCOLUMNS(
+			                    GENERATESERIES(1, QtdeTokens),
+			                    "SerieReal", TRIM(PATHITEM(SeriePath, [Value], TEXT))
+			                ),
+			                [SerieReal] <> "" && [SerieReal] <> "-"
+			            )
+			    )
+			RETURN
+			    IF(
+			        COUNTROWS(SeriesValidas) > 0,
+			        CALCULATE(
+			            CONCATENATEX(
+			                VALUES('f_MateriaisAplicados'[OS]),
+			                'f_MateriaisAplicados'[OS],
+			                ", "
+			            ),
+			            FILTER(
+			                ALL('f_MateriaisAplicados'),
+			                'f_MateriaisAplicados'[Nº Cliente] = IDContrato &&
+			                'f_MateriaisAplicados'[Data Aplicação] = MaxData
+			            )
+			        ),
+			        BLANK()
+			    )
+			```
+		lineageTag: 18736d3e-457b-4c3c-be70-46d7e0bd9ebc
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Número de Série Instalado' =
+			VAR IDContrato = f_Backlog[Nº Cliente]
+			VAR OSAplicacao = f_Backlog[OS Instalação Equip.]
+			VAR MaxData = f_Backlog[Data Instalação Equip.]
+			VAR MateriaisComSerie =
+			    CALCULATETABLE(
+			        SELECTCOLUMNS(
+			            'f_MateriaisAplicados',
+			            "Material", 'f_MateriaisAplicados'[Material],
+			            "SerieText", TRIM('f_MateriaisAplicados'[N° Serie])
+			        ),
+			        'f_MateriaisAplicados'[Nº Cliente] = IDContrato,
+			        'f_MateriaisAplicados'[Data Aplicação] = MaxData,
+			        'f_MateriaisAplicados'[OS] = OSAplicacao
+			    )
+			VAR MateriaisComSeriesValidas =
+			    GENERATE(
+			        MateriaisComSerie,
+			        VAR SeriePath = SUBSTITUTE(SUBSTITUTE([SerieText], ", ", "|"), ",", "|")
+			        VAR QtdeTokens = PATHLENGTH(SeriePath)
+			        RETURN
+			            FILTER(
+			                ADDCOLUMNS(
+			                    GENERATESERIES(1, QtdeTokens),
+			                    "SerieReal", TRIM(PATHITEM(SeriePath, [Value], TEXT))
+			                ),
+			                [SerieReal] <> "" && [SerieReal] <> "-"
+			            )
+			    )
+			VAR Resultado =
+			    CONCATENATEX(
+			        DISTINCT(
+			            SELECTCOLUMNS(
+			                MateriaisComSeriesValidas,
+			                "Serie", [SerieReal]
+			            )
+			        ),
+			        [Serie],
+			        ", ",
+			        [Serie],
+			        ASC
+			    )
+			RETURN
+			    IF(
+			        ISBLANK(Resultado) || TRIM(Resultado) = "",
+			        BLANK(),
+			        Resultado
+			    )
+		lineageTag: 96737b62-1404-4e92-b6c2-8f9426336e3c
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Equipamento Instalado' =
+			VAR IDContrato = f_Backlog[Nº Cliente]
+			VAR OSAplicacao = f_Backlog[OS Instalação Equip.]
+			VAR MaxData = f_Backlog[Data Instalação Equip.]
+			VAR MateriaisComSerie =
+			    CALCULATETABLE(
+			        SELECTCOLUMNS(
+			            'f_MateriaisAplicados',
+			            "Material", 'f_MateriaisAplicados'[Material],
+			            "SerieText", TRIM('f_MateriaisAplicados'[N° Serie])
+			        ),
+			        'f_MateriaisAplicados'[Nº Cliente] = IDContrato,
+			        'f_MateriaisAplicados'[Data Aplicação] = MaxData,
+			        'f_MateriaisAplicados'[OS] = OSAplicacao
+			    )
+			VAR MateriaisComSeriesValidas =
+			    GENERATE(
+			        MateriaisComSerie,
+			        VAR SeriePath = SUBSTITUTE(SUBSTITUTE([SerieText], ", ", "|"), ",", "|")
+			        VAR QtdeTokens = PATHLENGTH(SeriePath)
+			        RETURN
+			            FILTER(
+			                ADDCOLUMNS(
+			                    GENERATESERIES(1, QtdeTokens),
+			                    "SerieReal", TRIM(PATHITEM(SeriePath, [Value], TEXT))
+			                ),
+			                [SerieReal] <> "" && [SerieReal] <> "-"
+			            )
+			    )
+			VAR Resultado =
+			    CONCATENATEX(
+			        DISTINCT(
+			            SELECTCOLUMNS(
+			                MateriaisComSeriesValidas,
+			                "Material", [Material]
+			            )
+			        ),
+			        [Material],
+			        ", ",
+			        [Material],
+			        ASC
+			    )
+			RETURN
+			    IF(
+			        ISBLANK(Resultado) || TRIM(Resultado) = "",
+			        BLANK(),
+			        Resultado
+			    )
+		lineageTag: 08d285c0-ffd2-49fc-ba3b-8a645074c5f7
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Categoria Equipamento' =
+			VAR MaterialText = f_Backlog[Equipamento Instalado]
+			VAR DataInstalacao = f_Backlog[Data Instalação Equip.]
+			VAR RegraOnt5G =
+			    NOT(ISBLANK(DataInstalacao))
+			        && DataInstalacao < DATE(2026, 1, 1)
+			VAR TemVirgula = NOT(ISBLANK(MaterialText)) && SEARCH(",", MaterialText, 1, 0) > 0
+			RETURN
+			    IF(
+			        ISBLANK(MaterialText) || TRIM(MaterialText) = "",
+			        BLANK(),
+			        IF(
+			            NOT(TemVirgula),
+			            VAR MaterialNormalizado = TRIM(MaterialText)
+			            RETURN
+			                COALESCE(
+			                    IF(
+			                        RegraOnt5G
+			                            && (
+			                                MaterialNormalizado = "ONU GPON - EG8041 X6-10 S/ VOIP"
+			                                    || MaterialNormalizado = "REAP-ONU GPON - EG8041 X6-10 S/ VOIP"
+			                            ),
+			                        "ONT 5G",
+			                        LOOKUPVALUE(
+			                            'd_DE-PARA-TECNOLOGIA'[CATEGORIA],
+			                            'd_DE-PARA-TECNOLOGIA'[EQUIPAMENTO],
+			                            MaterialNormalizado
+			                        )
+			                    ),
+			                    "NÃO CLASSIFICADO"
+			                ),
+			            VAR MaterialComVirgula = MaterialText & ","
+			            VAR QtdMateriais = LEN(MaterialText) - LEN(SUBSTITUTE(MaterialText, ",", "")) + 1
+			            VAR TabelaCategorias =
+			                ADDCOLUMNS(
+			                    GENERATESERIES(1, QtdMateriais),
+			                    "Posicao", [Value],
+			                    "Material",
+			                        VAR Idx = [Value]
+			                        VAR TextoAntes = IF(Idx = 1, "", SUBSTITUTE(MaterialText, ",", "|", Idx - 1))
+			                        VAR PosInicio = IF(Idx = 1, 1, SEARCH("|", TextoAntes, 1) + 2)
+			                        VAR TextoRestante = MID(MaterialComVirgula, PosInicio, 9999)
+			                        VAR PosVirgula = SEARCH(",", TextoRestante, 1)
+			                        VAR MaterialExtraido = LEFT(TextoRestante, PosVirgula - 1)
+			                        RETURN TRIM(MaterialExtraido),
+			                    "Categoria",
+			                        VAR Idx = [Value]
+			                        VAR TextoAntes = IF(Idx = 1, "", SUBSTITUTE(MaterialText, ",", "|", Idx - 1))
+			                        VAR PosInicio = IF(Idx = 1, 1, SEARCH("|", TextoAntes, 1) + 2)
+			                        VAR TextoRestante = MID(MaterialComVirgula, PosInicio, 9999)
+			                        VAR PosVirgula = SEARCH(",", TextoRestante, 1)
+			                        VAR MaterialExtraido = TRIM(LEFT(TextoRestante, PosVirgula - 1))
+			                        RETURN
+			                            COALESCE(
+			                                IF(
+			                                    RegraOnt5G
+			                                        && (
+			                                            MaterialExtraido = "ONU GPON - EG8041 X6-10 S/ VOIP"
+			                                                || MaterialExtraido = "REAP-ONU GPON - EG8041 X6-10 S/ VOIP"
+			                                        ),
+			                                    "ONT 5G",
+			                                    LOOKUPVALUE(
+			                                        'd_DE-PARA-TECNOLOGIA'[CATEGORIA],
+			                                        'd_DE-PARA-TECNOLOGIA'[EQUIPAMENTO],
+			                                        MaterialExtraido
+			                                    )
+			                                ),
+			                                "NÃO CLASSIFICADO"
+			                            )
+			                )
+			            RETURN
+			                CONCATENATEX(
+			                    TabelaCategorias,
+			                    [Categoria],
+			                    ", ",
+			                    [Categoria],
+			                    ASC
+			                )
+			        )
+			    )
+		lineageTag: d36efdf5-6bb9-471e-a684-b5c41d5bc672
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Qtd Equipamentos Instalados' =
+			VAR MaterialText = f_Backlog[Equipamento Instalado]
+			RETURN
+			    IF(
+			        ISBLANK(MaterialText),
+			        BLANK(),
+			        LEN(MaterialText) - LEN(SUBSTITUTE(MaterialText, ",", "")) + 1
+			    )
+		lineageTag: 807f6d73-c1f9-4c55-88a1-e7b5813f6ed5
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	partition f_Backlog = m
+		mode: import
+		source =
+				let
+				    Fonte = Excel.Workbook(File.Contents(#"Pasta Raiz" & "\Backlog\Backlog.xlsx"), null, true),
+				    Sheet1_Sheet = Fonte{[Item="Sheet1",Kind="Sheet"]}[Data],
+				    #"Linhas Superiores Removidas" = Table.Skip(Sheet1_Sheet,1),
+				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(#"Linhas Superiores Removidas", [PromoteAllScalars=true]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"Nº. Ordem Serviço", type text}, {"Matrícula do Técnico", Int64.Type}, {"Identificação do Cliente", Int64.Type}, {"Nº Cliente", Int64.Type}, {"CPF/CNPJ do Cliente", Int64.Type}, {"N° da Venda", type any}, {"Nº Atendimento", type any}, {"Status", type text}, {"Responsabilidade", type text}, {"Responsável", type text}, {"Pontos Previstos", Int64.Type}, {"Pontos Realizados", Int64.Type}, {"Tipo de Serviço", type text}, {"Subtipo de Serviço", type text}, {"SLA", type text}, {"Tipo de Imóvel", type text}, {"Supervisor", type text}, {"Grupo Área", type text}, {"Área", type text}, {"Localidade", type text}, {"Cliente", type text}, {"Endereço", type text}, {"Número", type text}, {"Complemento", type text}, {"Bairro", type text}, {"Cidade", type text}, {"UF", type text}, {"País", type text}, {"Telefone Principal", type text}, {"Telefone Celular", type text}, {"Usuário de Abertura OS", type text}, {"Data/Hora Criação", type datetime}, {"Data/Hora Abertura Original", type datetime}, {"Usuário do Agendamento", Int64.Type}, {"Data/Hora do Agendamento", type datetime}, {"Data/Hora Deslocamento", type datetime}, {"Data/Hora Início do Atendimento", type datetime}, {"Data/Hora Pausa Atendimento", type datetime}, {"Data/Hora Reinício Atendimento", type any}, {"Data/Hora Fim do Atendimento", type any}, {"Descrição do Encerramento", type any}, {"Status Auditoria", type any}, {"Usuário do Encerramento", type any}, {"Data/Hora Encerramento", type any}, {"Data/Hora Venc. O.S.", type datetime}, {"Atendimento Finalizado", type text}, {"Contrato", type text}, {"Projeto", type text}, {"Categoria do Cliente", type any}, {"Monitor", type any}, {"Natureza", type text}, {"Plano/Produto", type any}, {"Período", type text}, {"Observação", type text}, {"Motivo Paralisação", type text}, {"Observação do Técnico", type text}, {"Latitude/Longitude", type text}, {"Quantidade Reabertura", Int64.Type}, {"WO", type any}, {"Tem Os Digital ?", type text}, {"Departamento", type text}, {"Tipo Prioridade", type text}, {"Status da Cobrança", type any}, {"Segmento", type any}, {"TECNICO AUXILIAR", type any}}),
+				    #"Colunas Removidas" = Table.RemoveColumns(#"Tipo Alterado",{"CPF/CNPJ do Cliente", "N° da Venda", "Nº Atendimento", "Responsabilidade", "Responsável", "Pontos Previstos", "Pontos Realizados", "Subtipo de Serviço", "SLA", "Tipo de Imóvel", "Supervisor", "Endereço", "Número", "Complemento", "Bairro", "País", "Telefone Principal", "Telefone Celular", "Usuário de Abertura OS", "Data/Hora Abertura Original", "Usuário do Agendamento", "Data/Hora do Agendamento", "Data/Hora Deslocamento", "Data/Hora Início do Atendimento", "Data/Hora Pausa Atendimento", "Data/Hora Reinício Atendimento", "Data/Hora Fim do Atendimento", "Descrição do Encerramento", "Status Auditoria", "Usuário do Encerramento", "Data/Hora Encerramento", "Data/Hora Venc. O.S.", "Atendimento Finalizado", "Categoria do Cliente", "Monitor", "Plano/Produto", "Período", "Observação", "Motivo Paralisação", "Observação do Técnico", "Latitude/Longitude", "Quantidade Reabertura", "WO", "Tem Os Digital ?", "Departamento", "Tipo Prioridade", "Status da Cobrança", "Segmento", "TECNICO AUXILIAR", "Matrícula do Técnico"}),
+				    #"Linhas Filtradas" = Table.SelectRows(#"Colunas Removidas", each ([Natureza] = "FTTH - RETIRADA" or [Natureza] = "IVR - RETIRADA"))
+				in
+				    #"Linhas Filtradas"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

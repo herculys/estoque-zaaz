@@ -1,0 +1,45 @@
+table d_ListagemProdutos
+	lineageTag: 6c001988-0dce-4afa-80de-075eaea4e111
+
+	column 'Cód.Material'
+		dataType: string
+		lineageTag: 495295ed-7a36-4e86-ace1-725957d254e7
+		summarizeBy: none
+		sourceColumn: Cód.Material
+
+		annotation SummarizationSetBy = Automatic
+
+	column Descrição
+		dataType: string
+		lineageTag: 7eed5a4f-35df-49ea-8380-7c5aabf21dc0
+		summarizeBy: none
+		sourceColumn: Descrição
+
+		annotation SummarizationSetBy = Automatic
+
+	column Unidade
+		dataType: string
+		lineageTag: 5411ef01-1f14-472f-91d8-1d0a596c0dac
+		summarizeBy: none
+		sourceColumn: Unidade
+
+		annotation SummarizationSetBy = Automatic
+
+	partition d_ListagemProdutos = m
+		mode: import
+		queryGroup: 'DE PARA'
+		source =
+				let
+				    Fonte = Excel.Workbook(File.Contents(#"Pasta Raiz" & "\Listagem de Produtos\Listagem de Produtos.xlsx"), null, true),
+				    SINAPSE_Sheet = Fonte{[Item="SINAPSE",Kind="Sheet"]}[Data],
+				    #"Linhas Superiores Removidas" = Table.Skip(SINAPSE_Sheet,2),
+				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(#"Linhas Superiores Removidas", [PromoteAllScalars=true]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"Cód.Material", type text}, {"Código Aux.", type text}, {"Descrição", type text}, {"Unidade", type text}, {"Código Retirada", type text}, {"Preço Médio", type number}, {"Estoque Minimo", Int64.Type}, {"Família", Int64.Type}, {"Descrição Família", type text}, {"Tem Complementar", type text}, {"Classificação", type text}, {"Tipo", type text}, {"Cod. Grupo Material", Int64.Type}, {"Grupo Material", type text}, {"Cód. Cpl. Exclusivo", type text}}),
+				    #"Colunas Removidas" = Table.RemoveColumns(#"Tipo Alterado",{"Código Aux.", "Código Retirada", "Preço Médio", "Estoque Minimo", "Família", "Descrição Família", "Tem Complementar", "Classificação", "Tipo", "Cod. Grupo Material", "Grupo Material", "Cód. Cpl. Exclusivo"})
+				in
+				    #"Colunas Removidas"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

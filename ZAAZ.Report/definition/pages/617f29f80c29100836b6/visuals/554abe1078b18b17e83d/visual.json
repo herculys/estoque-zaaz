@@ -1,0 +1,199 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "name": "554abe1078b18b17e83d",
+  "position": {
+    "x": 432.85714285714289,
+    "y": 172.85714285714286,
+    "z": 7000,
+    "height": 747.14285714285722,
+    "width": 1728.5714285714287,
+    "tabOrder": 7000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_Backlog"
+                    }
+                  },
+                  "Property": "Nº. Ordem Serviço"
+                }
+              },
+              "queryRef": "f_Backlog.Nº. Ordem Serviço",
+              "nativeQueryRef": "Nº. Ordem Serviço"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_Backlog"
+                    }
+                  },
+                  "Property": "Tipo de Serviço"
+                }
+              },
+              "queryRef": "f_Backlog.Tipo de Serviço",
+              "nativeQueryRef": "Tipo de Serviço"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_Backlog"
+                    }
+                  },
+                  "Property": "Projeto"
+                }
+              },
+              "queryRef": "f_Backlog.Projeto",
+              "nativeQueryRef": "Projeto"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_Backlog"
+                    }
+                  },
+                  "Property": "Categoria Equipamento"
+                }
+              },
+              "queryRef": "f_Backlog.Categoria Equipamento",
+              "nativeQueryRef": "Tecnologia Instalada",
+              "displayName": "Tecnologia Instalada"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_Backlog"
+                    }
+                  },
+                  "Property": "Equipamento Instalado"
+                }
+              },
+              "queryRef": "f_Backlog.Equipamento Instalado",
+              "nativeQueryRef": "Equipamentos Instalados",
+              "displayName": "Equipamentos Instalados"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_Backlog"
+                    }
+                  },
+                  "Property": "Número de Série Instalado"
+                }
+              },
+              "queryRef": "f_Backlog.Número de Série Instalado",
+              "nativeQueryRef": "Serial Instalado",
+              "displayName": "Serial Instalado"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_Backlog"
+                    }
+                  },
+                  "Property": "Data Instalação Equip."
+                }
+              },
+              "queryRef": "f_Backlog.Data Instalação Equip.",
+              "nativeQueryRef": "Data Instalação",
+              "displayName": "Data Instalação"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_Backlog"
+                    }
+                  },
+                  "Property": "OS Instalação Equip."
+                }
+              },
+              "queryRef": "f_Backlog.OS Instalação Equip.",
+              "nativeQueryRef": "OS Instalação Equip."
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "f_Backlog"
+                        }
+                      },
+                      "Property": "Qtd Equipamentos Instalados"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(f_Backlog.Qtd Equipamentos Instalados)",
+              "nativeQueryRef": "Equipamentos",
+              "displayName": "Equipamentos"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "355.5714451305694D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "f_Backlog.Equipamento Instalado"
+          }
+        }
+      ],
+      "columnHeaders": [
+        {
+          "properties": {}
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "stylePreset": [
+        {
+          "properties": {
+            "name": {
+              "expr": {
+                "Literal": {
+                  "Value": "'None'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "isHidden": true
+}

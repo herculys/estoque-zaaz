@@ -1,0 +1,439 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "name": "efde61a39031504ce5a2",
+  "position": {
+    "x": 173.34252239834598,
+    "y": 595.45141281874567,
+    "z": 16000,
+    "height": 392.99793246037217,
+    "width": 1616.9813921433495,
+    "tabOrder": 15000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_InventarioFisico"
+                    }
+                  },
+                  "Property": "Contrato"
+                }
+              },
+              "queryRef": "f_InventarioFisico.Contrato",
+              "nativeQueryRef": "Contrato"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_InventarioFisico"
+                    }
+                  },
+                  "Property": "Projeto"
+                }
+              },
+              "queryRef": "f_InventarioFisico.Projeto",
+              "nativeQueryRef": "Projeto"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_InventarioFisico"
+                    }
+                  },
+                  "Property": "Condição"
+                }
+              },
+              "queryRef": "f_InventarioFisico.Condição",
+              "nativeQueryRef": "Condição"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_InventarioFisico"
+                    }
+                  },
+                  "Property": "Descrição"
+                }
+              },
+              "queryRef": "f_InventarioFisico.Descrição",
+              "nativeQueryRef": "Material",
+              "displayName": "Material"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_InventarioFisico"
+                    }
+                  },
+                  "Property": "Código Complementar"
+                }
+              },
+              "queryRef": "f_InventarioFisico.Código Complementar",
+              "nativeQueryRef": "Serial",
+              "displayName": "Serial"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "f_InventarioFisico"
+                        }
+                      },
+                      "Property": "Saldo Calculado"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(f_InventarioFisico.Saldo Calculado)",
+              "nativeQueryRef": "Saldo",
+              "displayName": "Saldo"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "f_InventarioFisico"
+                        }
+                      },
+                      "Property": "Qtde. Declarada"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(f_InventarioFisico.Qtde. Declarada)",
+              "nativeQueryRef": "Declarado",
+              "displayName": "Declarado"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "f_InventarioFisico"
+                        }
+                      },
+                      "Property": "Diferença"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(f_InventarioFisico.Diferença)",
+              "nativeQueryRef": "Diferença",
+              "displayName": "Diferença"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_InventarioFisico"
+                    }
+                  },
+                  "Property": "DataHora Baixa"
+                }
+              },
+              "queryRef": "f_InventarioFisico.DataHora Baixa",
+              "nativeQueryRef": "DataHora Baixa"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_InventarioFisico"
+                    }
+                  },
+                  "Property": "Status Conversao"
+                }
+              },
+              "queryRef": "f_InventarioFisico.Status Conversao",
+              "nativeQueryRef": "Status Conversão",
+              "displayName": "Status Conversão"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_InventarioFisico"
+                    }
+                  },
+                  "Property": "Data Conv. Posterior ao Inventario"
+                }
+              },
+              "queryRef": "f_InventarioFisico.Data Conv. Posterior ao Inventario",
+              "nativeQueryRef": "Data Conversão",
+              "displayName": "Data Conversão"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_InventarioFisico"
+                    }
+                  },
+                  "Property": "Conv. Condição Destino"
+                }
+              },
+              "queryRef": "f_InventarioFisico.Conv. Condição Destino",
+              "nativeQueryRef": "Convertido Para",
+              "displayName": "Convertido Para"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_InventarioFisico"
+                    }
+                  },
+                  "Property": "Último Movimento Data"
+                }
+              },
+              "queryRef": "f_InventarioFisico.Último Movimento Data",
+              "nativeQueryRef": "Último Movimento Data"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_InventarioFisico"
+                    }
+                  },
+                  "Property": "Último Movimento"
+                }
+              },
+              "queryRef": "f_InventarioFisico.Último Movimento",
+              "nativeQueryRef": "Último Movimento"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_InventarioFisico"
+                    }
+                  },
+                  "Property": "Última Condição"
+                }
+              },
+              "queryRef": "f_InventarioFisico.Última Condição",
+              "nativeQueryRef": "Última Condição"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_InventarioFisico"
+                    }
+                  },
+                  "Property": "Última Posição"
+                }
+              },
+              "queryRef": "f_InventarioFisico.Última Posição",
+              "nativeQueryRef": "Última Posição"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "columnHeaders": [
+        {
+          "properties": {
+            "columnAdjustment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'growToFit'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "8D"
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "values": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "8D"
+                }
+              }
+            },
+            "fontColorPrimary": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": -0.6
+                    }
+                  }
+                }
+              }
+            },
+            "fontColorSecondary": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": -0.6
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "116.69724770642202D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "f_InventarioFisico.Código Complementar"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "258.41567373934066D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "f_InventarioFisico.Descrição"
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "stylePreset": [
+        {
+          "properties": {
+            "name": {
+              "expr": {
+                "Literal": {
+                  "Value": "'None'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "radius": {
+              "expr": {
+                "Literal": {
+                  "Value": "12D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "dropShadow": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": -0.3
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

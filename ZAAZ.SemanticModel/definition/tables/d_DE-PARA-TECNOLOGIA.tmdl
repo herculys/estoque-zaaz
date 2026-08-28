@@ -1,0 +1,122 @@
+table d_DE-PARA-TECNOLOGIA
+	lineageTag: d563c1d0-3908-4de9-98a8-dcafedbb1ad7
+
+	column EQUIPAMENTO
+		dataType: string
+		lineageTag: 6d41c4f4-aa24-4e3a-9ad2-43b414ebac19
+		summarizeBy: none
+		sourceColumn: EQUIPAMENTO
+
+		annotation SummarizationSetBy = Automatic
+
+	column CATEGORIA
+		dataType: string
+		lineageTag: 2e7ae17d-0543-4a89-9b14-fff325b39796
+		summarizeBy: none
+		sourceColumn: CATEGORIA
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Padrão Wi-FI'
+		dataType: string
+		lineageTag: b7d5a064-e051-4962-9dce-ef0cc4e42dbe
+		summarizeBy: none
+		sourceColumn: Padrão Wi-FI
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Throughput Wi-Fi'
+		dataType: string
+		lineageTag: 1f12e69a-f84e-4499-9233-ffbeeed7c585
+		summarizeBy: none
+		sourceColumn: Throughput Wi-Fi
+
+		annotation SummarizationSetBy = Automatic
+
+	column Classificação
+		dataType: string
+		lineageTag: b62f965f-67d7-4655-b475-4730c590c3a7
+		summarizeBy: none
+		sourceColumn: Classificação
+
+		annotation SummarizationSetBy = Automatic
+
+	column Prioridade
+		dataType: string
+		lineageTag: d526b8c1-c37f-4ed0-94fb-c7b893d3fe23
+		summarizeBy: none
+		sourceColumn: Prioridade
+
+		annotation SummarizationSetBy = Automatic
+
+	column Fabricante
+		dataType: string
+		lineageTag: fc931a0f-278a-4100-804b-87bbee3e7c86
+		summarizeBy: none
+		sourceColumn: Fabricante
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Portas WAN'
+		dataType: string
+		lineageTag: b271aaaf-f96b-4388-8ec7-40fd5cdc94db
+		summarizeBy: none
+		sourceColumn: Portas WAN
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Portas LAN'
+		dataType: string
+		lineageTag: 583ef378-93ff-401c-825d-4217e0cc13c9
+		summarizeBy: none
+		sourceColumn: Portas LAN
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Portas FXS'
+		dataType: string
+		lineageTag: 0df1738b-1e2f-4a56-83c6-db7ff19a67fb
+		summarizeBy: none
+		sourceColumn: Portas FXS
+
+		annotation SummarizationSetBy = Automatic
+
+	column Observação
+		dataType: string
+		lineageTag: e87a06a1-d1b4-49a4-83d0-a2a2710700d2
+		summarizeBy: none
+		sourceColumn: Observação
+
+		annotation SummarizationSetBy = Automatic
+
+	partition d_DE-PARA-TECNOLOGIA = m
+		mode: import
+		queryGroup: 'DE PARA'
+		source = ```
+				let
+				    Fonte = Excel.Workbook(File.Contents(#"Pasta Raiz" & "\DE PARA ZAAZ.xlsx"), null, true),
+				    #"DE PARA TECNOLOGIA_Sheet" = Fonte{[Item="DE PARA TECNOLOGIA",Kind="Sheet"]}[Data],
+				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(#"DE PARA TECNOLOGIA_Sheet", [PromoteAllScalars=true]),
+				    //#"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"EQUIPAMENTO", type text}, {"CATEGORIA", type text}})
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",
+				    {
+				        {"EQUIPAMENTO", type text}, 
+				        {"CATEGORIA", type text},
+				        {"Padrão Wi-FI", type text},
+				        {"Throughput Wi-Fi", type text},
+				        {"Classificação", type text},
+				        {"Prioridade", type text},
+				        {"Fabricante", type text},
+				        {"Portas WAN", type text},
+				        {"Portas LAN", type text},
+				        {"Portas FXS", type text},
+				        {"Observação", type text}
+				    })
+				in
+				    #"Tipo Alterado"
+				```
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

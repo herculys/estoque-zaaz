@@ -1,0 +1,810 @@
+table f_InventarioFisico
+	lineageTag: 7e1183a4-659e-421f-a66c-8704e6e6b822
+
+	column Contrato
+		dataType: string
+		lineageTag: dd2f42ea-a2a7-44dd-8c36-7391ffea7ee3
+		summarizeBy: none
+		sourceColumn: Contrato
+
+		annotation SummarizationSetBy = Automatic
+
+	column Projeto
+		dataType: string
+		lineageTag: db26f548-0bc2-4b36-b2ab-32993ef99d67
+		summarizeBy: none
+		sourceColumn: Projeto
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sequencial
+		dataType: int64
+		formatString: 0
+		lineageTag: 415be26b-d0a1-441f-b63f-2f746cb29da6
+		summarizeBy: sum
+		sourceColumn: Sequencial
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Data Inicial'
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 55ff163a-a23d-4ed7-ba48-9838805d7d58
+		summarizeBy: none
+		sourceColumn: Data Inicial
+
+		variation Variation
+			isDefault
+			relationship: 6636e6c0-7e24-40d9-8387-7228268fd86d
+			defaultHierarchy: LocalDateTable_879ea78a-8ef0-43c3-95da-e36507348d8f.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Data Final'
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 0f4036a8-b1bf-43e6-a3b9-3e2e3c2be2e1
+		summarizeBy: none
+		sourceColumn: Data Final
+
+		variation Variation
+			isDefault
+			relationship: ab605c9d-1221-438b-93de-8c07fb93dad0
+			defaultHierarchy: LocalDateTable_39a02517-0f41-43d9-8008-52449d3f682b.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Observação
+		dataType: string
+		lineageTag: dacef058-3bc7-4567-babb-ec950779d7a1
+		summarizeBy: none
+		sourceColumn: Observação
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Cod. Material'
+		dataType: string
+		lineageTag: f5674a90-41a9-46b6-b267-26029fe52302
+		summarizeBy: none
+		sourceColumn: Cod. Material
+
+		annotation SummarizationSetBy = Automatic
+
+	column Descrição
+		dataType: string
+		lineageTag: d3e05ef8-9d3e-4f70-9fbb-d6deab7d36cd
+		summarizeBy: none
+		sourceColumn: Descrição
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'unid.'
+		dataType: string
+		lineageTag: 2b8a1bc8-1051-45ef-a186-8c7c59fdfbfc
+		summarizeBy: none
+		sourceColumn: unid.
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Código Complementar'
+		dataType: string
+		lineageTag: fe05ef41-6132-45e7-bb2b-130b11fd5679
+		summarizeBy: none
+		sourceColumn: Código Complementar
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Qtde. Declarada'
+		dataType: int64
+		formatString: 0
+		lineageTag: ccc25d43-2270-49ce-a895-51f480974741
+		summarizeBy: sum
+		sourceColumn: Qtde. Declarada
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Saldo Calculado'
+		dataType: int64
+		formatString: 0
+		lineageTag: cf446e54-68e2-4b0e-b31c-386bf25b856a
+		summarizeBy: sum
+		sourceColumn: Saldo Calculado
+
+		annotation SummarizationSetBy = Automatic
+
+	column Diferença
+		dataType: int64
+		formatString: 0
+		lineageTag: 0c9e5ccf-4c6d-4087-9436-97626f51b87c
+		summarizeBy: sum
+		sourceColumn: Diferença
+
+		annotation SummarizationSetBy = Automatic
+
+	column Usuário
+		dataType: string
+		lineageTag: 1f2a6312-e38d-4ba7-807e-2c85d5c04463
+		summarizeBy: none
+		sourceColumn: Usuário
+
+		annotation SummarizationSetBy = Automatic
+
+	column Data
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: ca127c7b-a5d4-48fa-af72-fde1bd5019ea
+		summarizeBy: none
+		sourceColumn: Data
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'DataHora Baixa'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: a80726ae-38bd-40b2-99d8-b0fdd512c4e0
+		summarizeBy: none
+		sourceColumn: DataHora Baixa
+
+		variation Variation
+			isDefault
+			relationship: ede3d6ad-41fd-425a-802c-1be202e07fd1
+			defaultHierarchy: LocalDateTable_2b57718c-3be0-4833-84ea-98cd7da29c03.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'd_DE-PARA-TECNOLOGIA.CATEGORIA'
+		dataType: string
+		lineageTag: 031ddb10-d904-4ce8-87a7-03a15aabb5f0
+		summarizeBy: none
+		sourceColumn: d_DE-PARA-TECNOLOGIA.CATEGORIA
+
+		annotation SummarizationSetBy = Automatic
+
+	column Condição
+		dataType: string
+		lineageTag: 1fa1ed71-628a-495c-a21e-4501a87a608f
+		summarizeBy: none
+		sourceColumn: Condição
+
+		annotation SummarizationSetBy = Automatic
+
+	column Serializado?
+		dataType: string
+		lineageTag: de871215-ab3d-49bd-93db-4d0d94bfed0d
+		summarizeBy: none
+		sourceColumn: Serializado?
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Data Conv. Posterior ao Inventario' = ```
+			
+			
+			VAR vNumeroSerie = f_InventarioFisico[Código Complementar]
+			VAR vDateTimeInventario = f_InventarioFisico[DataHora Baixa]
+			
+			VAR vConversaoDateTime = 
+			    MINX(
+			        FILTER (
+			            'f_ConferenciaMovimento',
+			            
+			            'f_ConferenciaMovimento'[Cod.Compl.] = vNumeroSerie &&
+			            ('f_ConferenciaMovimento'[DataHora Baixa]) >= vDateTimeInventario &&
+			            
+			            'f_ConferenciaMovimento'[Tipo Movimento] = "CM" &&
+			            'f_ConferenciaMovimento'[Entrada] = 1
+			        ),
+			        'f_ConferenciaMovimento'[DataHora Baixa]
+			    )
+			    
+			RETURN
+			    vConversaoDateTime
+			```
+		lineageTag: 09f76456-db7f-4e06-a74e-3408339e2cc2
+		summarizeBy: none
+
+		variation Variation
+			isDefault
+			relationship: 9e7a696b-c2eb-4907-a57c-ab6822d309c4
+			defaultHierarchy: LocalDateTable_be8ffa8d-9194-40fe-b10f-88deb6c3d5b4.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Status Conversao' = ```
+			
+			VAR vMomentoConversao = f_InventarioFisico[Data Conv. Posterior ao Inventario]
+			VAR CodComplementar = f_InventarioFisico[Código Complementar]   
+			VAR condicaoMat = f_InventarioFisico[Condição]
+			VAR QteDeclarado = f_InventarioFisico[Qtde. Declarada]
+			
+			RETURN
+			IF(
+			    QteDeclarado > 0,
+			    IF(
+			        condicaoMat = "RETIRADO",
+			
+			        IF(
+			            // 1. Se tiver data de conversão, está CONVERTIDO
+			            NOT ISBLANK(vMomentoConversao),
+			            "CONVERTIDO",
+			            
+			            // 2. Se NÃO tiver data e serial for - então é não serializado
+			            IF(
+			                CodComplementar = "-",
+			                "NÃO SERIALIZADO",
+			                "PENDENTE" -- Se não tiver data, mas tiver serial então é pendente.
+			            )
+			        ),
+			        IF(
+			            CodComplementar <> "-",
+			            condicaoMat&" INVENTARIADO",
+			            "NÃO SERIALIZADO"
+			        )
+			    ),
+			    "PERDIDO"
+			)
+			```
+		lineageTag: 8bdc5faf-ce5a-4a72-8805-5c237abde70f
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Conv. Material Destino' = ```
+			
+			
+			VAR vNumeroSerie = f_InventarioFisico[Código Complementar]
+			VAR vMomentoConversao = f_InventarioFisico[Data Conv. Posterior ao Inventario]
+			
+			RETURN
+			IF(
+			    ISBLANK(vMomentoConversao),
+			    BLANK(),
+			    CALCULATE(
+			        MIN('f_ConferenciaMovimento'[Descrição Material]),
+			        
+			        'f_ConferenciaMovimento'[Cod.Compl.] = vNumeroSerie,
+			        ('f_ConferenciaMovimento'[DataHora Baixa]) = vMomentoConversao,
+			        'f_ConferenciaMovimento'[Tipo Movimento] = "CM",
+			        'f_ConferenciaMovimento'[Entrada] = 1
+			    )
+			)
+			```
+		lineageTag: d9fc21f3-8e43-4f24-9b43-30d49182b132
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Conv. Condição Destino' = ```
+			
+			VAR Cod = UPPER(f_InventarioFisico[Conv. Material Destino])
+			RETURN
+			
+			SWITCH ( 
+			    TRUE(),
+			    -- Se a Descrição contém "DET-" ou "DEF-"
+			    CONTAINSSTRING(Cod, "DEF-") || CONTAINSSTRING(Cod, "DET-"), "DEFEITO",
+			        
+			    -- Se a Descrição contém "RET-"
+			    CONTAINSSTRING(Cod, "RET-"), "RETIRADO",
+			        
+			    -- Se a Descrição contém "REAP-"
+			    CONTAINSSTRING(Cod, "REAP-") || CONTAINSSTRING(Cod, "REA-"), "REAPROVEITADO",
+			        
+			    -- Se a Descrição contém "suc-"
+			    CONTAINSSTRING(Cod, "SUC-"), "DESUSO",
+			        
+			    -- Caso não contenha nenhum dos prefixos acima
+			    IF(
+			        Cod <> BLANK() && cod <> "-", "NOVO",
+			        BLANK()
+			    )
+			)
+			```
+		lineageTag: 99a35254-f66a-4ad6-b9f1-f81586e0727f
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Último Movimento' = ```
+			
+			
+			VAR vNumeroSerie = f_InventarioFisico[Código Complementar]  
+			VAR vDateTimeRetirada = f_InventarioFisico[DataHora Baixa]
+			
+			RETURN
+			// 1. Saída Rápida: Poupa processamento nas linhas não serializadas
+			IF (
+			    ISBLANK(vNumeroSerie) || vNumeroSerie = "-",
+			    BLANK(),
+			    
+			    // 2. Max Conferência (Tabela Virtual Minimizada)
+			    VAR vMaxConferencia = 
+			        MAXX (
+			            FILTER (
+			                ALL ( 
+			                    'f_ConferenciaMovimento'[Cod.Compl.], 
+			                    'f_ConferenciaMovimento'[DataHora Baixa]
+			                ),
+			                'f_ConferenciaMovimento'[Cod.Compl.] = vNumeroSerie &&
+			                ('f_ConferenciaMovimento'[DataHora Baixa]) >= vDateTimeRetirada
+			            ),
+			            'f_ConferenciaMovimento'[DataHora Baixa]
+			        )
+			        
+			    // 3. Max Aplicação
+			    VAR vMaxAplicacao = 
+			        MAXX (
+			            FILTER (
+			                ALL (
+			                    'f_MateriaisAplicados'[N° Serie],
+			                    'f_MateriaisAplicados'[DataHora Aplicacao]
+			                ),
+			                'f_MateriaisAplicados'[N° Serie] = vNumeroSerie &&
+			                ('f_MateriaisAplicados'[DataHora Aplicacao]) >= vDateTimeRetirada
+			            ),
+			            'f_MateriaisAplicados'[DataHora Aplicacao]
+			        )
+			
+			    // 4. Max Nova Retirada
+			    VAR vMaxNovaRetirada = 
+			        MAXX (
+			            FILTER (
+			                ALL (
+			                    'f_MateriaisRetirados'[N° Serie],
+			                    'f_MateriaisRetirados'[DataHora Retirada]
+			                ),
+			                'f_MateriaisRetirados'[N° Serie] = vNumeroSerie &&
+			                ('f_MateriaisRetirados'[DataHora Retirada]) > vDateTimeRetirada
+			            ),
+			            'f_MateriaisRetirados'[DataHora Retirada]
+			        )
+			
+			    // 5. Maior Data Global
+			    VAR vGlobalMax = MAX ( vMaxConferencia, MAX ( vMaxAplicacao, vMaxNovaRetirada ) )
+			
+			    // 6. Retorno otimizado (Sem Transição de Contexto)
+			    RETURN
+			        IF (
+			            ISBLANK(vGlobalMax), 
+			            BLANK(),
+			            
+			            SWITCH (
+			                TRUE(),
+			                vGlobalMax = vMaxNovaRetirada, "Nova Retirada",
+			                vGlobalMax = vMaxAplicacao, "Reaplicado",
+			                vGlobalMax = vMaxConferencia, 
+			                    
+			                    // Busca o Tipo de Movimento sem usar CALCULATE
+			                    VAR vTipoMovimento = 
+			                        MINX (
+			                            FILTER (
+			                                ALL (
+			                                    'f_ConferenciaMovimento'[Cod.Compl.],
+			                                    'f_ConferenciaMovimento'[DataHora Baixa],
+			                                    'f_ConferenciaMovimento'[Tipo Movimento]
+			                                ),
+			                                'f_ConferenciaMovimento'[Cod.Compl.] = vNumeroSerie &&
+			                                ('f_ConferenciaMovimento'[DataHora Baixa]) = vGlobalMax
+			                            ),
+			                            'f_ConferenciaMovimento'[Tipo Movimento]
+			                        )
+			                    
+			                    RETURN
+			                        // Switch direto em vTipoMovimento
+			                        SWITCH (
+			                            vTipoMovimento,
+			                            "DM", "Devolução de Material",
+			                            "CM", "Conversão de Material",
+			                            "IE", "Inventário de Equipe",
+			                            "IF", "Inventário Físico",
+			                            "NF", "Nota Fiscal",
+			                            "RM", "Requisição de Material",
+			                            "TM", "Transferência de Material",
+			                            "TF", "Transferência para Fornecedor",
+			                            "", "Transferência entre Equipes",
+			                            "NÃO MAPEADO (" & vTipoMovimento & ")"
+			                        )
+			            )
+			        )
+			)
+			```
+		lineageTag: 4dd97ad2-c406-40bb-9682-4bf1ffe1396f
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Último Movimento Data' = ```
+			
+			
+			VAR vNumeroSerie = f_InventarioFisico[Código Complementar]
+			VAR vDateTimeRetirada = f_InventarioFisico[DataHora Baixa]
+			
+			RETURN
+			// 1. Saída Rápida: Se não tiver N° de Série, retorna a própria data de retirada imediatamente
+			IF (
+			    ISBLANK(vNumeroSerie) || vNumeroSerie = "-",
+			    vDateTimeRetirada,
+			    
+			    // 2. Max Conferência (Tabela Virtual Minimizada com ALL)
+			    VAR vMaxConferencia = 
+			        MAXX (
+			            FILTER (
+			                ALL ( 
+			                    'f_ConferenciaMovimento'[Cod.Compl.], 
+			                    'f_ConferenciaMovimento'[DataHora Baixa]
+			                ),
+			                'f_ConferenciaMovimento'[Cod.Compl.] = vNumeroSerie &&
+			                ('f_ConferenciaMovimento'[DataHora Baixa]) >= vDateTimeRetirada
+			            ),
+			            'f_ConferenciaMovimento'[DataHora Baixa]
+			        )
+			        
+			    // 3. Max Aplicação (Tabela Virtual Minimizada com ALL)
+			    VAR vMaxAplicacao = 
+			        MAXX (
+			            FILTER (
+			                ALL (
+			                    'f_MateriaisAplicados'[N° Serie],
+			                    'f_MateriaisAplicados'[DataHora Aplicacao]
+			                ),
+			                'f_MateriaisAplicados'[N° Serie] = vNumeroSerie &&
+			                ('f_MateriaisAplicados'[DataHora Aplicacao]) >= vDateTimeRetirada
+			            ),
+			            'f_MateriaisAplicados'[DataHora Aplicacao]
+			        )
+			
+			    // 4. Max Nova Retirada (Tabela Virtual Minimizada com ALL)
+			    VAR vMaxNovaRetirada = 
+			        MAXX (
+			            FILTER (
+			                ALL (
+			                    'f_MateriaisRetirados'[N° Serie],
+			                    'f_MateriaisRetirados'[DataHora Retirada]
+			                ),
+			                'f_MateriaisRetirados'[N° Serie] = vNumeroSerie &&
+			                ('f_MateriaisRetirados'[DataHora Retirada]) > vDateTimeRetirada
+			            ),
+			            'f_MateriaisRetirados'[DataHora Retirada]
+			        )
+			
+			    // 5. Encontra a Data "Vencedora" Global
+			    VAR vGlobalMax = MAX ( vMaxConferencia, MAX ( vMaxAplicacao, vMaxNovaRetirada ) )
+			
+			    // 6. Retorna a data vencedora ou a data inicial se não houve movimento futuro
+			    RETURN
+			        IF (
+			            ISBLANK(vGlobalMax), 
+			            vDateTimeRetirada, 
+			            vGlobalMax 
+			        )
+			)
+			```
+		lineageTag: 89442125-95fa-493f-a92f-f254b1825220
+		summarizeBy: none
+
+		variation Variation
+			isDefault
+			relationship: 3c93d5fd-633a-4747-8f02-5ccc4f5c74e9
+			defaultHierarchy: LocalDateTable_e6aac5b9-1786-4572-a9fd-dac988300a9d.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Última Condição' = ```
+			
+			    
+			// --- 1. Dados Iniciais ---
+			VAR vNumeroSerie = f_InventarioFisico[Código Complementar]
+			VAR vDateTimeRetirada = f_InventarioFisico[DataHora Baixa]
+			
+			// Variável de controle para desativar buscas pesadas se não for serializado
+			VAR vIsSerializado = NOT ( ISBLANK(vNumeroSerie) || vNumeroSerie = "-" )
+			
+			// --- 2 a 5. Buscas das Datas (Executadas apenas se for Serializado) ---
+			VAR vMaxConferenciaOutros = 
+			    IF ( vIsSerializado,
+			        MAXX (
+			            FILTER (
+			                ALL ( 'f_ConferenciaMovimento'[Cod.Compl.], 'f_ConferenciaMovimento'[DataHora Baixa], 'f_ConferenciaMovimento'[Tipo Movimento] ),
+			                'f_ConferenciaMovimento'[Cod.Compl.] = vNumeroSerie &&
+			                'f_ConferenciaMovimento'[Tipo Movimento] <> "CM" &&
+			                ('f_ConferenciaMovimento'[DataHora Baixa]) >= vDateTimeRetirada
+			            ),
+			            'f_ConferenciaMovimento'[DataHora Baixa]
+			        )
+			    )
+			
+			VAR vMaxConversao = 
+			    IF ( vIsSerializado,
+			        MAXX (
+			            FILTER (
+			                ALL ( 'f_ConferenciaMovimento'[Cod.Compl.], 'f_ConferenciaMovimento'[DataHora Baixa], 'f_ConferenciaMovimento'[Tipo Movimento], 'f_ConferenciaMovimento'[Entrada] ),
+			                'f_ConferenciaMovimento'[Cod.Compl.] = vNumeroSerie &&
+			                'f_ConferenciaMovimento'[Tipo Movimento] = "CM" &&
+			                'f_ConferenciaMovimento'[Entrada] = 1 &&
+			                ('f_ConferenciaMovimento'[DataHora Baixa]) >= vDateTimeRetirada
+			            ),
+			            'f_ConferenciaMovimento'[DataHora Baixa]
+			        )
+			    )
+			
+			VAR vMaxAplicacao = 
+			    IF ( vIsSerializado,
+			        MAXX (
+			            FILTER (
+			                ALL ( 'f_MateriaisAplicados'[N° Serie], 'f_MateriaisAplicados'[DataHora Aplicacao] ),
+			                'f_MateriaisAplicados'[N° Serie] = vNumeroSerie &&
+			                ('f_MateriaisAplicados'[DataHora Aplicacao]) >= vDateTimeRetirada
+			            ),
+			            'f_MateriaisAplicados'[DataHora Aplicacao]
+			        )
+			    )
+			
+			VAR vMaxNovaRetirada = 
+			    IF ( vIsSerializado,
+			        MAXX (
+			            FILTER (
+			                ALL ( 'f_MateriaisRetirados'[N° Serie], 'f_MateriaisRetirados'[DataHora Retirada] ),
+			                'f_MateriaisRetirados'[N° Serie] = vNumeroSerie &&
+			                ('f_MateriaisRetirados'[DataHora Retirada]) > vDateTimeRetirada 
+			            ),
+			            'f_MateriaisRetirados'[DataHora Retirada]
+			        )
+			    )
+			
+			// --- 6. Data "Vencedora" Global ---
+			VAR vGlobalMax = MAX ( vMaxConferenciaOutros, MAX ( vMaxConversao, MAX ( vMaxAplicacao, vMaxNovaRetirada ) ) )
+			
+			// --- 7. Verifica Condição Especial "PERDIDO" (Sem usar CALCULATE) ---
+			VAR vStatusPerdido = 
+			    IF (
+			        vGlobalMax = vMaxConferenciaOutros && NOT ISBLANK(vGlobalMax),
+			        // Busca ultra-rápida: se achar a linha exata que cumpre IF e Saída=1, retorna "PERDIDO"
+			        VAR vAchouPerdido = 
+			            MINX (
+			                FILTER (
+			                    ALL ( 'f_ConferenciaMovimento'[Cod.Compl.], 'f_ConferenciaMovimento'[DataHora Baixa], 'f_ConferenciaMovimento'[Tipo Movimento], 'f_ConferenciaMovimento'[Saída] ),
+			                    'f_ConferenciaMovimento'[Cod.Compl.] = vNumeroSerie &&
+			                    ('f_ConferenciaMovimento'[DataHora Baixa]) = vGlobalMax &&
+			                    'f_ConferenciaMovimento'[Tipo Movimento] = "IF" &&
+			                    'f_ConferenciaMovimento'[Saída] = 1
+			                ),
+			                "PERDIDO"
+			            )
+			        RETURN vAchouPerdido
+			    )
+			
+			// --- 8. Encontra o Cód. Material "Vencedor" (Sem usar CALCULATE) ---
+			VAR vWinningCodMat = 
+			    SWITCH (
+			        TRUE(),
+			        ISBLANK(vGlobalMax), 
+			            f_InventarioFisico[Descrição], 
+			            
+			        vGlobalMax = vMaxConferenciaOutros || vGlobalMax = vMaxConversao,
+			            MINX (
+			                FILTER (
+			                    ALL ( 'f_ConferenciaMovimento'[Cod.Compl.], 'f_ConferenciaMovimento'[DataHora Baixa], 'f_ConferenciaMovimento'[Descrição Material] ),
+			                    'f_ConferenciaMovimento'[Cod.Compl.] = vNumeroSerie &&
+			                    ('f_ConferenciaMovimento'[DataHora Baixa]) = vGlobalMax
+			                ),
+			                'f_ConferenciaMovimento'[Descrição Material]
+			            ),
+			
+			        vGlobalMax = vMaxAplicacao,
+			            MINX (
+			                FILTER (
+			                    ALL ( 'f_MateriaisAplicados'[N° Serie], 'f_MateriaisAplicados'[DataHora Aplicacao], 'f_MateriaisAplicados'[Material] ),
+			                    'f_MateriaisAplicados'[N° Serie] = vNumeroSerie &&
+			                    ('f_MateriaisAplicados'[DataHora Aplicacao]) = vGlobalMax
+			                ),
+			                'f_MateriaisAplicados'[Material]
+			            ),
+			
+			        vGlobalMax = vMaxNovaRetirada, 
+			            MINX (
+			                FILTER (
+			                    ALL ( 'f_MateriaisRetirados'[N° Serie], 'f_MateriaisRetirados'[DataHora Retirada], 'f_MateriaisRetirados'[Material] ),
+			                    'f_MateriaisRetirados'[N° Serie] = vNumeroSerie &&
+			                    ('f_MateriaisRetirados'[DataHora Retirada]) = vGlobalMax
+			                ),
+			                'f_MateriaisRetirados'[Material]
+			            )
+			    )
+			
+			// --- 9. Calcula a Condição Base ---
+			VAR vBaseCondicao = 
+			    IF(
+			        vStatusPerdido = "PERDIDO", 
+			        "PERDIDO",
+			        
+			        IF (
+			            ISBLANK(vWinningCodMat),
+			            BLANK(),
+			            VAR vCodLower = LOWER(vWinningCodMat)
+			            RETURN
+			                // Substituição dos IFs aninhados por um SWITCH(TRUE) limpo
+			                SWITCH (
+			                    TRUE(),
+			                    CONTAINSSTRING(vCodLower, "DEF-") || CONTAINSSTRING(vCodLower, "DET-"), "DEFEITO",
+			                    CONTAINSSTRING(vCodLower, "RET-"), "RETIRADO",
+			                    CONTAINSSTRING(vCodLower, "REAP-") || CONTAINSSTRING(vCodLower, "REA-"), "REAPROVEITADO",
+			                    CONTAINSSTRING(vCodLower, "SUC-"), "DESUSO",
+			                    IF(
+			                        vCodLower <> BLANK() && vCodLower <> "-",
+			                        "NOVO",
+			                        BLANK()
+			                    )
+			                )
+			        )
+			    )
+			
+			// --- 10. Retorno Final ---
+			RETURN
+			/*
+			    IF(
+			        ISBLANK(vBaseCondicao) && 'f_MateriaisRetirados'[Status Movimento] = "Pendente Devolução",
+			        'f_MateriaisRetirados'[Status Movimento], 
+			        vBaseCondicao
+			    )
+			*/
+			
+			vBaseCondicao
+			```
+		lineageTag: f0f3e22d-1296-4ad2-9a15-018c3720fbd6
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Última Posição' = ```
+			
+			    
+			// --- 1. Dados da linha atual (Retirada Original) ---
+			VAR vNumeroSerie = f_InventarioFisico[Código Complementar]
+			VAR vDateTimeRetirada = f_InventarioFisico[DataHora Baixa]
+			
+			// Variável de controle: impede varreduras se o item não for válido
+			VAR vIsSerializado = NOT ( ISBLANK(vNumeroSerie) || vNumeroSerie = "-" )
+			
+			// --- 2. Momentos MÁXIMOS (Avaliado apenas se for serializado) ---
+			VAR vMaxConferencia = 
+			    IF ( vIsSerializado,
+			        MAXX (
+			            FILTER (
+			                ALL ( 'f_ConferenciaMovimento'[Cod.Compl.], 'f_ConferenciaMovimento'[DataHora Baixa] ),
+			                'f_ConferenciaMovimento'[Cod.Compl.] = vNumeroSerie &&
+			                'f_ConferenciaMovimento'[DataHora Baixa] >= vDateTimeRetirada
+			            ),
+			            'f_ConferenciaMovimento'[DataHora Baixa]
+			        )
+			    )
+			    
+			VAR vMaxAplicacao = 
+			    IF ( vIsSerializado,
+			        MAXX (
+			            FILTER (
+			                ALL ( 'f_MateriaisAplicados'[N° Serie], 'f_MateriaisAplicados'[DataHora Aplicacao] ),
+			                'f_MateriaisAplicados'[N° Serie] = vNumeroSerie &&
+			                'f_MateriaisAplicados'[DataHora Aplicacao] >= vDateTimeRetirada
+			            ),
+			            'f_MateriaisAplicados'[DataHora Aplicacao]
+			        )
+			    )
+			
+			VAR vMaxNovaRetirada = 
+			    IF ( vIsSerializado,
+			        MAXX (
+			            FILTER (
+			                ALL ( 'f_MateriaisRetirados'[N° Serie], 'f_MateriaisRetirados'[DataHora Retirada] ),
+			                'f_MateriaisRetirados'[N° Serie] = vNumeroSerie &&
+			                'f_MateriaisRetirados'[DataHora Retirada] > vDateTimeRetirada
+			            ),
+			            'f_MateriaisRetirados'[DataHora Retirada]
+			        )
+			    )
+			
+			// --- 3. Encontra a Data "Vencedora" Global ---
+			VAR vGlobalMax = MAX ( vMaxConferencia, MAX ( vMaxAplicacao, vMaxNovaRetirada ) )
+			
+			// --- 4. Retorna a POSIÇÃO ---
+			RETURN
+			    IF ( NOT vIsSerializado, 
+			        BLANK(), // Retorno rápido para ignorar os não-serializados
+			        
+			        SWITCH (
+			            TRUE(),
+			            
+			            // Caso 0: Nenhum movimento FUTURO.
+			            ISBLANK(vGlobalMax), "VOLANTE",
+			            
+			            // Caso 1: A Aplicação é a mais recente
+			            vGlobalMax = vMaxAplicacao, "ASSINANTE",
+			            
+			            // Caso 2: Nova Retirada
+			            vGlobalMax = vMaxNovaRetirada, "VOLANTE",
+			
+			            // Caso 3: A Conferencia é a mais recente
+			            vGlobalMax = vMaxConferencia,
+			                
+			                // Variáveis extraídas da memória de forma isolada e sem Transição de Contexto
+			                VAR vTipoMovimento = MINX ( FILTER ( ALL ( 'f_ConferenciaMovimento'[Cod.Compl.], 'f_ConferenciaMovimento'[DataHora Baixa], 'f_ConferenciaMovimento'[Tipo Movimento] ), 'f_ConferenciaMovimento'[Cod.Compl.] = vNumeroSerie && 'f_ConferenciaMovimento'[DataHora Baixa] = vGlobalMax ), 'f_ConferenciaMovimento'[Tipo Movimento] )
+			                VAR vSaida = MINX ( FILTER ( ALL ( 'f_ConferenciaMovimento'[Cod.Compl.], 'f_ConferenciaMovimento'[DataHora Baixa], 'f_ConferenciaMovimento'[Saída] ), 'f_ConferenciaMovimento'[Cod.Compl.] = vNumeroSerie && 'f_ConferenciaMovimento'[DataHora Baixa] = vGlobalMax ), 'f_ConferenciaMovimento'[Saída] )
+			                VAR vEntrada = MINX ( FILTER ( ALL ( 'f_ConferenciaMovimento'[Cod.Compl.], 'f_ConferenciaMovimento'[DataHora Baixa], 'f_ConferenciaMovimento'[Entrada] ), 'f_ConferenciaMovimento'[Cod.Compl.] = vNumeroSerie && 'f_ConferenciaMovimento'[DataHora Baixa] = vGlobalMax ), 'f_ConferenciaMovimento'[Entrada] )
+			                VAR vNroDoc = MINX ( FILTER ( ALL ( 'f_ConferenciaMovimento'[Cod.Compl.], 'f_ConferenciaMovimento'[DataHora Baixa], 'f_ConferenciaMovimento'[Nº. Doc] ), 'f_ConferenciaMovimento'[Cod.Compl.] = vNumeroSerie && 'f_ConferenciaMovimento'[DataHora Baixa] = vGlobalMax ), 'f_ConferenciaMovimento'[Nº. Doc] )
+			                VAR vNomeConferencia = MINX ( FILTER ( ALL ( 'f_ConferenciaMovimento'[Cod.Compl.], 'f_ConferenciaMovimento'[DataHora Baixa], 'f_ConferenciaMovimento'[Nome] ), 'f_ConferenciaMovimento'[Cod.Compl.] = vNumeroSerie && 'f_ConferenciaMovimento'[DataHora Baixa] = vGlobalMax ), 'f_ConferenciaMovimento'[Nome] )
+			
+			                RETURN
+			                    SWITCH (
+			                        TRUE(),
+			                        // --- LÓGICA DO PERDIDO ADICIONADA AQUI COMO PRIORIDADE ---
+			                        (vTipoMovimento = "IF" && vSaida = 1), "PERDIDO",
+			                        
+			                        (ISBLANK(vTipoMovimento) || vTipoMovimento = "") && NOT(ISBLANK(vNroDoc)) && CONTAINSSTRING(vNroDoc, "T"), "VOLANTE",
+			                        (vTipoMovimento = "IF" && vEntrada > 0), "ESTOQUE",
+			                        (vTipoMovimento = "IE" && vEntrada > 0), "VOLANTE", 
+			                        (vTipoMovimento = "IE" && vSaida > 0 && (ISBLANK(vNomeConferencia) || vNomeConferencia = "")), "PERDIDO VOLANTE",
+			                        (vTipoMovimento = "IE" && vSaida > 0 && NOT(ISBLANK(vNomeConferencia) || vNomeConferencia = "")), "VOLANTE",
+			                        vTipoMovimento IN {"NF", "CM", "DM", "TM"}, "ESTOQUE",
+			                        vTipoMovimento = "RM", "VOLANTE",
+			                        BLANK()
+			                    )
+			        )
+			    )
+			```
+		lineageTag: 6e8f0cfd-0844-43dd-97db-0271724b2de8
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition f_InventarioFisico = m
+		mode: import
+		queryGroup: 'Tabelas Principais'
+		source = ```
+				let
+				  //Origem = Folder.Files("C:\Users\proxx\OneDrive\Área de Trabalho\ZaaZ\Estoque\Inventário Fìsico - Analítico"),
+				    Origem = Folder.Files(#"Pasta Raiz" & "\Inventário Fìsico - Analítico"),
+				    #"Arquivos Ocultos Filtrados1" = Table.SelectRows(Origem, each [Attributes]?[Hidden]? <> true),
+				    #"Invocar Função Personalizada1" = Table.AddColumn(#"Arquivos Ocultos Filtrados1", "Transformar Arquivo (3)", each #"Transformar Arquivo (3)"([Content])),
+				    #"Colunas Renomeadas1" = Table.RenameColumns(#"Invocar Função Personalizada1", {"Name", "Nome da Origem"}),
+				    #"Outras Colunas Removidas1" = Table.SelectColumns(#"Colunas Renomeadas1", {"Nome da Origem", "Transformar Arquivo (3)"}),
+				    #"Coluna de Tabela Expandida1" = Table.ExpandTableColumn(#"Outras Colunas Removidas1", "Transformar Arquivo (3)", Table.ColumnNames(#"Transformar Arquivo (3)"(#"Arquivo de Amostra (3)"))),
+				    #"Personalização Adicionada" = Table.AddColumn(#"Coluna de Tabela Expandida1", "DataHora Baixa", each try #datetime(Date.Year([Data]), Date.Month([Data]), Date.Day([Data]), Time.Hour([Hora]), Time.Minute([Hora]), Time.Second([Hora])) otherwise null),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Personalização Adicionada",{{"Tipo Saldo", type text}, {"Contrato", type text}, {"Projeto", type text}, {"Sequencial", Int64.Type}, {"Data Final", type date}, {"Data Inicial", type date}}),
+				    #"Colunas Reordenadas" = Table.ReorderColumns(#"Tipo Alterado",{"Nome da Origem", "Tipo Saldo", "Contrato", "Projeto", "Sequencial", "Data Inicial", "Data Final", "Observação", "Cód. Custo", "Descrição Centro Custo", "Cod. Material", "Descrição", "unid.", "Código Complementar", "Código Complementar Aux.", "Localização Real", "Qtde. Declarada", "Valor Unitario", "Saldo Calculado", "Diferença", "Diferença Acumulada", "Quantidade Cliente", "Usuário", "Data", "Hora", "DataHora Baixa"}),
+				    #"Tipo Alterado1" = Table.TransformColumnTypes(#"Colunas Reordenadas",{{"Observação", type text}, {"Cód. Custo", Int64.Type}, {"Descrição Centro Custo", type text}, {"Cod. Material", type text}, {"Descrição", type text}, {"unid.", type text}, {"Código Complementar", type text}, {"Qtde. Declarada", Int64.Type}, {"Valor Unitario", Currency.Type}, {"Saldo Calculado", Int64.Type}, {"Diferença", Int64.Type}, {"DataHora Baixa", type datetime}, {"Hora", type time}, {"Data", type date}, {"Usuário", type text}}),
+				    #"Colunas Removidas" = Table.RemoveColumns(#"Tipo Alterado1",{"Quantidade Cliente", "Código Complementar Aux.", "Localização Real", "Valor Unitario", "Nome da Origem", "Diferença Acumulada", "Hora", "Descrição Centro Custo", "Cód. Custo", "Tipo Saldo"}),
+				  // Criando a coluna de Condição Aplicada (Lógica 1)
+				    Condição = Table.AddColumn(#"Colunas Removidas", "Condição", each 
+				    let 
+				        Cod = Text.Upper(Text.From([Descrição])) 
+				    in
+				        if Text.Contains(Cod, "DEF-") or Text.Contains(Cod, "DET-") then "DEFEITO"
+				        else if Text.Contains(Cod, "RET-") then "RETIRADO"
+				        else if Text.Contains(Cod, "REAP-") or Text.Contains(Cod, "REA-") then "REAPROVEITADO"
+				        else if Text.Contains(Cod, "SUC-") then "DESUSO"
+				        else if [Descrição] <> null and [Descrição] <> "" then "NOVO"
+				        else "VAZIO"
+				    ),
+				
+				  // Criando a coluna de Verificação de N° de Série (Lógica 2)
+				    NumSerie = Table.AddColumn(#"Condição", "Serializado?", each 
+				        if [#"Código Complementar"] = null or [#"Código Complementar"] = "-" or [#"Código Complementar"] = "" then "NÃO" 
+				        else "SIM"
+				    ),
+				    #"Tipo Alterado2" = Table.TransformColumnTypes(NumSerie,{{"Condição", type text}, {"Serializado?", type text}}),
+				    #"Consultas Mescladas" = Table.NestedJoin(#"Tipo Alterado2", {"Descrição"}, #"d_DE-PARA-TECNOLOGIA", {"EQUIPAMENTO"}, "d_DE-PARA-TECNOLOGIA", JoinKind.LeftOuter),
+				    #"d_DE-PARA-TECNOLOGIA Expandido" = Table.ExpandTableColumn(#"Consultas Mescladas", "d_DE-PARA-TECNOLOGIA", {"CATEGORIA"}, {"d_DE-PARA-TECNOLOGIA.CATEGORIA"}),
+				    #"Valor Substituído" = Table.ReplaceValue(#"d_DE-PARA-TECNOLOGIA Expandido",null,"NÃO MAPEADO",Replacer.ReplaceValue,{"d_DE-PARA-TECNOLOGIA.CATEGORIA"}),
+				    #"Colunas Reordenadas1" = Table.ReorderColumns(#"Valor Substituído",{"Contrato", "Projeto", "Sequencial", "Data Inicial", "Data Final", "Observação", "Cod. Material", "Descrição", "unid.", "Código Complementar", "Qtde. Declarada", "Saldo Calculado", "Diferença", "Usuário", "Data", "DataHora Baixa", "d_DE-PARA-TECNOLOGIA.CATEGORIA", "Condição", "Serializado?"})
+				in
+				    #"Colunas Reordenadas1"
+				```
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

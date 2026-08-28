@@ -1,0 +1,303 @@
+table f_ConversaoProdutos
+	lineageTag: 31ca0eb5-6c78-48ef-8edb-d471195235d7
+
+	measure '% Reaproveitamento' = ```
+			
+			VAR _TotalReaproveitado = 
+			    CALCULATE(
+			        COUNTROWS(f_ConversaoProdutos),
+			        f_ConversaoProdutos[Condição Destino] = "REAPROVEITADO"
+			    )
+			
+			VAR _TotalFiltrado = 
+			    CALCULATE(
+			        COUNTROWS(f_ConversaoProdutos),
+			        ALLSELECTED(f_ConversaoProdutos[Condição Destino])
+			    )
+			
+			RETURN
+			    DIVIDE(_TotalReaproveitado, _TotalFiltrado, 0)
+			
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 7d9ec9a9-faa1-4a99-91a6-ddf52d251dc5
+
+	column 'Seq. Conversão'
+		dataType: int64
+		formatString: 0
+		lineageTag: 1a7c73bd-24d8-466b-ad67-31a27082c715
+		summarizeBy: sum
+		sourceColumn: Seq. Conversão
+
+		annotation SummarizationSetBy = Automatic
+
+	column Contrato
+		dataType: string
+		lineageTag: 0e163907-9320-44de-b076-6b2083209741
+		summarizeBy: none
+		sourceColumn: Contrato
+
+		annotation SummarizationSetBy = Automatic
+
+	column Projeto
+		dataType: string
+		lineageTag: 67404815-c7ed-44d8-914b-b2c9a0833f3a
+		summarizeBy: none
+		sourceColumn: Projeto
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Cód. Material Origem'
+		dataType: string
+		lineageTag: 4c7249f2-5dae-4025-926b-9eca4f8f5e14
+		summarizeBy: none
+		sourceColumn: Cód. Material Origem
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Material Origem'
+		dataType: string
+		lineageTag: 2d0cf63e-2b77-4423-86de-c0cdb0d919d6
+		summarizeBy: none
+		sourceColumn: Material Origem
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Unid. Origem'
+		dataType: string
+		lineageTag: 180ec728-e5e9-477a-bb52-1ca85ec09495
+		summarizeBy: none
+		sourceColumn: Unid. Origem
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Cód. Material Destino'
+		dataType: string
+		lineageTag: 2e4823bc-c6d1-4e2a-8d85-e479e5e6cefa
+		summarizeBy: none
+		sourceColumn: Cód. Material Destino
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Material Destino'
+		dataType: string
+		lineageTag: 9f1ad4ab-28b4-406b-a745-f6a294a6f1ec
+		summarizeBy: none
+		sourceColumn: Material Destino
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Unid. Destino'
+		dataType: string
+		lineageTag: 45d1347f-e761-48b4-b31a-cba42b2ec712
+		summarizeBy: none
+		sourceColumn: Unid. Destino
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Qtde Origem'
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 73d3e808-14d8-47d9-9f58-8fccec3ceec9
+		summarizeBy: sum
+		sourceColumn: Qtde Origem
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Qtde Destino'
+		dataType: double
+		formatString: #,0.00
+		lineageTag: c70a9e62-f466-4a32-9662-2e184f059d4b
+		summarizeBy: sum
+		sourceColumn: Qtde Destino
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Cod. Cpl Orig.'
+		dataType: string
+		lineageTag: 42ab42de-c1da-4504-819b-4b172a53dd0d
+		summarizeBy: none
+		sourceColumn: Cod. Cpl Orig.
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Cod. Cpl Destino'
+		dataType: string
+		lineageTag: 8a482090-71fd-465b-98d8-61df1359a025
+		summarizeBy: none
+		sourceColumn: Cod. Cpl Destino
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Usuário Criação'
+		dataType: string
+		lineageTag: 97416390-998c-4b59-892d-8010d142e8d9
+		summarizeBy: none
+		sourceColumn: Usuário Criação
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Dia Criação'
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 6189da01-bdc2-44d0-a808-584ffb9d6bde
+		summarizeBy: none
+		sourceColumn: Dia Criação
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Hora Criação'
+		dataType: dateTime
+		formatString: Long Time
+		lineageTag: 1f5849a0-5c96-4d3f-a91f-c74c06530999
+		summarizeBy: none
+		sourceColumn: Hora Criação
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	column 'Condição Origem'
+		dataType: string
+		lineageTag: 48449e62-5e8a-4333-96ff-382abbfd19bf
+		summarizeBy: none
+		sourceColumn: Condição Origem
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Origem é Serializado?'
+		dataType: string
+		lineageTag: dffd81c4-988b-4efc-ae47-0b0efceff862
+		summarizeBy: none
+		sourceColumn: Origem é Serializado?
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Condição Destino'
+		dataType: string
+		lineageTag: d956c8df-8055-4473-b764-4de6eeb2dfcd
+		summarizeBy: none
+		sourceColumn: Condição Destino
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Destino é Serializado?'
+		dataType: string
+		lineageTag: daa68a7a-dde6-4ea5-a060-4063ba7b3157
+		summarizeBy: none
+		sourceColumn: Destino é Serializado?
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Categoria da Origem'
+		dataType: string
+		lineageTag: e02f26a5-637f-4002-a56d-08b50aa4eb8d
+		summarizeBy: none
+		sourceColumn: Categoria da Origem
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Categoria do Destino'
+		dataType: string
+		lineageTag: c866e7f9-7fbf-4b6c-9e38-24a4c9d3b057
+		summarizeBy: none
+		sourceColumn: Categoria do Destino
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Integridade do Serial' =
+			
+			
+			IF(f_ConversaoProdutos[Cod. Cpl Orig.] = f_ConversaoProdutos[Cod. Cpl Destino], "OK", "ALTERADO")
+		lineageTag: c61b6639-5ff5-4f9b-8a6b-82d35f5cd714
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Integridade Qtde.' =
+			
+			
+			IF(f_ConversaoProdutos[Qtde Origem] = f_ConversaoProdutos[Qtde Destino], "OK", "DIVERGENTE")
+		lineageTag: 4a9983c3-5619-4b69-be89-04a07bd20507
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition f_ConversaoProdutos = m
+		mode: import
+		queryGroup: 'Tabelas Principais'
+		source = ```
+				let
+				  //Origem = Folder.Files("C:\Users\proxx\OneDrive\Área de Trabalho\ZaaZ\Estoque\Conversão de Produtos"),
+				  Origem = Folder.Files(#"Pasta Raiz" & "\Conversão de Produtos"),
+				  #"Arquivos ocultos filtrados" = Table.SelectRows(Origem, each [Attributes]?[Hidden]? <> true),
+				    #"Arquivos Ocultos Filtrados1" = Table.SelectRows(#"Arquivos ocultos filtrados", each [Attributes]?[Hidden]? <> true),
+				    #"Invocar Função Personalizada1" = Table.AddColumn(#"Arquivos Ocultos Filtrados1", "Transformar Arquivo (5)", each #"Transformar Arquivo (5)"([Content])),
+				    #"Colunas Renomeadas1" = Table.RenameColumns(#"Invocar Função Personalizada1", {"Name", "Nome da Origem"}),
+				    #"Outras Colunas Removidas1" = Table.SelectColumns(#"Colunas Renomeadas1", {"Nome da Origem", "Transformar Arquivo (5)"}),
+				    #"Coluna de Tabela Expandida1" = Table.ExpandTableColumn(#"Outras Colunas Removidas1", "Transformar Arquivo (5)", Table.ColumnNames(#"Transformar Arquivo (5)"(#"Arquivo de Amostra (5)"))),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Coluna de Tabela Expandida1",{{"Seq. Conversão", Int64.Type}, {"Contrato", type text}, {"Projeto", type text}, {"Cód. Material Origem", type text}, {"Material Origem", type text}, {"Unid. Origem", type text}, {"Cód. Material Destino", type text}, {"Material Destino", type text}, {"Unid. Destino", type text}, {"Qtde Origem", type number}, {"Qtde Destino", type number}, {"Cod. Cpl Orig.", type text}, {"Cod. Cpl Destino", type text}, {"Usuário Criação", type text}, {"Dia Criação", type date}, {"Hora Criação", type time}}),
+				    #"Colunas Removidas" = Table.RemoveColumns(#"Tipo Alterado",{"Fator", "Nome da Origem", "Valor Unit. Origem", "Valor Unit. Destino", "Total Destino", "Valor Total"}),
+				    
+				    // Criando a coluna de Condição Origem Convertida (Lógica 1)
+				    Condição = Table.AddColumn(#"Colunas Removidas", "Condição Origem", each 
+				    let 
+				        // Se for null, transforma em texto vazio "" antes do Text.Upper
+				        Cod = Text.Upper(Text.From([Material Origem] ?? "")) 
+				    in
+				        if Text.Contains(Cod, "DEF-") or Text.Contains(Cod, "DET-") then "DEFEITO"
+				        else if Text.Contains(Cod, "RET-") then "RETIRADO"
+				        else if Text.Contains(Cod, "REAP-") or Text.Contains(Cod, "REA-") then "REAPROVEITADO"
+				        else if Text.Contains(Cod, "SUC-") then "DESUSO"
+				        else if [Material Origem] <> null and [Material Origem] <> "" then "NOVO"
+				        else "VAZIO"
+				    ),
+				
+				    // Criando a coluna de Verificação de N° de Série Origem (Lógica 2)
+				    NumSerie = Table.AddColumn(#"Condição", "Origem é Serializado?", each 
+				        if [#"Cod. Cpl Orig."] = null or [#"Cod. Cpl Orig."] = "" then "VAZIO"
+				        else if [#"Cod. Cpl Orig."] = "-" then "NÃO" 
+				        else "SIM"
+				    ),
+				
+				    // Criando a coluna de Condição Destino Convertida (Lógica 3)
+				    Condição2 = Table.AddColumn(#"NumSerie", "Condição Destino", each 
+				    let 
+				        // Se for null, transforma em texto vazio "" antes do Text.Upper
+				        Cod = Text.Upper(Text.From([Material Destino] ?? "")) 
+				    in
+				        if Text.Contains(Cod, "DEF-") or Text.Contains(Cod, "DET-") then "DEFEITO"
+				        else if Text.Contains(Cod, "RET-") then "RETIRADO"
+				        else if Text.Contains(Cod, "REAP-") or Text.Contains(Cod, "REA-") then "REAPROVEITADO"
+				        else if Text.Contains(Cod, "SUC-") then "DESUSO"
+				        else if [Material Destino] <> null and [Material Destino] <> "" then "NOVO"
+				        else "VAZIO"
+				    ),
+				
+				    // Criando a coluna de Verificação de N° de Série Destino (Lógica 24)
+				    NumSerie2 = Table.AddColumn(#"Condição2", "Destino é Serializado?", each 
+				        if [#"Cod. Cpl Destino"] = null or [#"Cod. Cpl Destino"] = "" then "VAZIO" 
+				        else if [#"Cod. Cpl Destino"] = "-" then "NÃO"
+				        else "SIM"
+				    ),
+				    #"Valor Substituído" = Table.ReplaceValue(NumSerie2,null,0,Replacer.ReplaceValue,{"Qtde Origem"}),
+				    #"Valor Substituído1" = Table.ReplaceValue(#"Valor Substituído",null,0,Replacer.ReplaceValue,{"Qtde Destino"}),
+				    #"Tipo Alterado1" = Table.TransformColumnTypes(#"Valor Substituído1",{{"Condição Origem", type text}, {"Origem é Serializado?", type text}, {"Condição Destino", type text}, {"Destino é Serializado?", type text}}),
+				    #"Consultas Mescladas" = Table.NestedJoin(#"Tipo Alterado1", {"Material Origem"}, #"d_DE-PARA-TECNOLOGIA", {"EQUIPAMENTO"}, "d_DE-PARA-TECNOLOGIA", JoinKind.LeftOuter),
+				    #"d_DE-PARA-TECNOLOGIA Expandido" = Table.ExpandTableColumn(#"Consultas Mescladas", "d_DE-PARA-TECNOLOGIA", {"CATEGORIA"}, {"d_DE-PARA-TECNOLOGIA.CATEGORIA"}),
+				    #"Colunas Renomeadas" = Table.RenameColumns(#"d_DE-PARA-TECNOLOGIA Expandido",{{"d_DE-PARA-TECNOLOGIA.CATEGORIA", "Categoria da Origem"}}),
+				    #"Consultas Mescladas1" = Table.NestedJoin(#"Colunas Renomeadas", {"Material Destino"}, #"d_DE-PARA-TECNOLOGIA", {"EQUIPAMENTO"}, "d_DE-PARA-TECNOLOGIA", JoinKind.LeftOuter),
+				    #"d_DE-PARA-TECNOLOGIA Expandido1" = Table.ExpandTableColumn(#"Consultas Mescladas1", "d_DE-PARA-TECNOLOGIA", {"CATEGORIA"}, {"d_DE-PARA-TECNOLOGIA.CATEGORIA"}),
+				    #"Colunas Renomeadas2" = Table.RenameColumns(#"d_DE-PARA-TECNOLOGIA Expandido1",{{"d_DE-PARA-TECNOLOGIA.CATEGORIA", "Categoria do Destino"}}),
+				    #"Valor Substituído2" = Table.ReplaceValue(#"Colunas Renomeadas2",null,"NÃO MAPEADO",Replacer.ReplaceValue,{"Categoria da Origem"}),
+				    #"Valor Substituído3" = Table.ReplaceValue(#"Valor Substituído2",null,"NÃO MAPEADO",Replacer.ReplaceValue,{"Categoria do Destino"})
+				in
+				    #"Valor Substituído3"
+				```
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

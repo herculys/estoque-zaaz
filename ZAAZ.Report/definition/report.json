@@ -1,0 +1,124 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/report/3.3.0/schema.json",
+  "themeCollection": {
+    "baseTheme": {
+      "name": "CY26SU04",
+      "reportVersionAtImport": {
+        "visual": "2.8.0",
+        "report": "3.2.0",
+        "page": "2.3.1"
+      },
+      "type": "SharedResources"
+    }
+  },
+  "objects": {
+    "section": [
+      {
+        "properties": {
+          "verticalAlignment": {
+            "expr": {
+              "Literal": {
+                "Value": "'Top'"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "outspacePane": [
+      {
+        "properties": {
+          "expanded": {
+            "expr": {
+              "Literal": {
+                "Value": "false"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "resourcePackages": [
+    {
+      "name": "SharedResources",
+      "type": "SharedResources",
+      "items": [
+        {
+          "name": "CY26SU04",
+          "path": "BaseThemes/CY26SU04.json",
+          "type": "BaseTheme"
+        }
+      ]
+    },
+    {
+      "name": "RegisteredResources",
+      "type": "RegisteredResources",
+      "items": [
+        {
+          "name": "background0727578028974053.png",
+          "path": "background0727578028974053.png",
+          "type": "Image"
+        },
+        {
+          "name": "background07418012370774106.png",
+          "path": "background07418012370774106.png",
+          "type": "Image"
+        },
+        {
+          "name": "background15237646199380028.png",
+          "path": "background15237646199380028.png",
+          "type": "Image"
+        },
+        {
+          "name": "background2440220126225502.png",
+          "path": "background2440220126225502.png",
+          "type": "Image"
+        },
+        {
+          "name": "background3453669629604209.png",
+          "path": "background3453669629604209.png",
+          "type": "Image"
+        },
+        {
+          "name": "Grupo_ZAAZ5641055064730185.png",
+          "path": "Grupo_ZAAZ5641055064730185.png",
+          "type": "Image"
+        },
+        {
+          "name": "home5793470713396631.png",
+          "path": "home5793470713396631.png",
+          "type": "Image"
+        },
+        {
+          "name": "Logo_ZaaZ6060950755448554.png",
+          "path": "Logo_ZaaZ6060950755448554.png",
+          "type": "Image"
+        },
+        {
+          "name": "Logo_ZaaZ8302661398565699.png",
+          "path": "Logo_ZaaZ8302661398565699.png",
+          "type": "Image"
+        },
+        {
+          "name": "loja16018484983601278.png",
+          "path": "loja16018484983601278.png",
+          "type": "Image"
+        },
+        {
+          "name": "Wallpaper24491967710000773.png",
+          "path": "Wallpaper24491967710000773.png",
+          "type": "Image"
+        }
+      ]
+    }
+  ],
+  "settings": {
+    "useStylableVisualContainerHeader": true,
+    "exportDataMode": "AllowSummarized",
+    "defaultDrillFilterOtherVisuals": true,
+    "allowChangeFilterTypes": true,
+    "useEnhancedTooltips": true,
+    "useDefaultAggregateDisplayName": true
+  }
+}

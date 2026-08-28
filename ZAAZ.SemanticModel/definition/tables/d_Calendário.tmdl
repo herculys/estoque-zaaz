@@ -1,0 +1,136 @@
+table d_Calendário
+	lineageTag: 1cf414ce-165f-4277-b92b-cdfdfc2ad4a5
+
+	column Data
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: dadc677e-7d59-45c4-93f1-79f809846692
+		summarizeBy: none
+		sourceColumn: Data
+
+		variation Variation
+			isDefault
+			relationship: 0ae9a7ed-2109-48c7-bd55-b0aaffae57ba
+			defaultHierarchy: LocalDateTable_164f070a-558b-4d2b-87df-4a7bc7d919a1.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Ano
+		dataType: int64
+		formatString: 0
+		lineageTag: 2c4e777b-9db8-4df5-89ef-1bd7ddadbd6a
+		summarizeBy: sum
+		sourceColumn: Ano
+
+		annotation SummarizationSetBy = Automatic
+
+	column Mês
+		dataType: int64
+		formatString: 0
+		lineageTag: f23f0be8-abd6-44e2-a9be-9a89087f287f
+		summarizeBy: sum
+		sourceColumn: Mês
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Nome Mês'
+		dataType: string
+		lineageTag: 8b345dbc-b3e4-4091-8de7-2fc02c31a2c5
+		summarizeBy: none
+		sourceColumn: Nome Mês
+
+		annotation SummarizationSetBy = Automatic
+
+	column Dia
+		dataType: int64
+		formatString: 0
+		lineageTag: 04ad939c-2bef-497c-874b-a6b3d49f8c41
+		summarizeBy: sum
+		sourceColumn: Dia
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Dia Semana'
+		dataType: int64
+		formatString: 0
+		lineageTag: 0e90ad1d-5d4a-4e8d-b170-95a4153ddded
+		summarizeBy: sum
+		sourceColumn: Dia Semana
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Nome Dia Semana'
+		dataType: string
+		lineageTag: e67b485c-e0fe-45f8-a9a5-ff85a8f9495a
+		summarizeBy: none
+		sourceColumn: Nome Dia Semana
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ano-Mês
+		dataType: string
+		lineageTag: 44caee19-a82f-473e-9db6-3700206b7438
+		summarizeBy: none
+		sourceColumn: Ano-Mês
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Início do Mês'
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: e9c7ee10-be54-40a7-92e2-6f8cd4ac2fe4
+		summarizeBy: none
+		sourceColumn: Início do Mês
+
+		variation Variation
+			isDefault
+			relationship: 90431eef-0793-47fb-8487-ebbd8478c1b6
+			defaultHierarchy: LocalDateTable_4140487e-53b5-4437-8968-fe9ab460a1fa.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition d_Calendário = m
+		mode: import
+		queryGroup: 'DE PARA'
+		source =
+				let
+				    // Fonte: tabela já carregada no Power Query
+				    //Fonte = #"Materiais Aplicados & Retirados",
+				
+				    // Captura das datas mínima e máxima
+				    //DataMin = List.Min(Fonte[Data Aplicação]),
+				    //DataMax = List.Max(Fonte[Data Aplicação]),
+				    DataMin = #date(2024, 1, 1),
+				    DataMax = #date(2028, 1, 1), //DateTime.Date(DateTime.LocalNow()),
+				
+				    // Criação da lista de datas
+				    ListaDatas = List.Dates(
+				        DataMin,
+				        Duration.Days(DataMax - DataMin) + 1,
+				        #duration(1,0,0,0)
+				    ),
+				
+				    // Converte lista em tabela
+				    TabelaCalendario = Table.FromList(ListaDatas, Splitter.SplitByNothing(), {"Data"}),
+				
+				    // Adiciona colunas de atributos do calendário
+				    TipoAlterado = Table.TransformColumnTypes(TabelaCalendario, {{"Data", type date}}),
+				    Ano = Table.AddColumn(TipoAlterado, "Ano", each Date.Year([Data]), Int64.Type),
+				    Mes = Table.AddColumn(Ano, "Mês", each Date.Month([Data]), Int64.Type),
+				    NomeMes = Table.AddColumn(Mes, "Nome Mês", each Date.MonthName([Data]), type text),
+				    Dia = Table.AddColumn(NomeMes, "Dia", each Date.Day([Data]), Int64.Type),
+				    DiaSemana = Table.AddColumn(Dia, "Dia Semana", each Date.DayOfWeek([Data]) + 1, Int64.Type),
+				    NomeDiaSemana = Table.AddColumn(DiaSemana, "Nome Dia Semana", each Date.DayOfWeekName([Data]), type text),
+				    AnoMes = Table.AddColumn(NomeDiaSemana, "Ano-Mês", each Date.ToText([Data], "yyyy-MM"), type text),
+				    #"Início do Mês Inserido" = Table.AddColumn(AnoMes, "Início do Mês", each Date.StartOfMonth([Data]), type date)
+				in
+				    #"Início do Mês Inserido"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

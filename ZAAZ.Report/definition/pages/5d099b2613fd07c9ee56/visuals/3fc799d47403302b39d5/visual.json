@@ -1,0 +1,574 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "name": "3fc799d47403302b39d5",
+  "position": {
+    "x": 519.02912621359224,
+    "y": 93.05825242718447,
+    "z": 5000,
+    "height": 32.76699029126214,
+    "width": 184.80582524271844,
+    "tabOrder": 6000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_ConversaoProdutos"
+                    }
+                  },
+                  "Property": "Contrato"
+                }
+              },
+              "queryRef": "f_ConversaoProdutos.Contrato",
+              "nativeQueryRef": "Contrato"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_ConversaoProdutos"
+                    }
+                  },
+                  "Property": "Projeto"
+                }
+              },
+              "queryRef": "f_ConversaoProdutos.Projeto",
+              "nativeQueryRef": "Projeto"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_ConversaoProdutos"
+                    }
+                  },
+                  "Property": "Seq. Conversão"
+                }
+              },
+              "queryRef": "Sum(f_ConversaoProdutos.Seq. Conversão)",
+              "nativeQueryRef": "Seq.",
+              "displayName": "Seq."
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_ConversaoProdutos"
+                    }
+                  },
+                  "Property": "Cód. Material Origem"
+                }
+              },
+              "queryRef": "f_ConversaoProdutos.Cód. Material Origem",
+              "nativeQueryRef": "Cód. Material Origem"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_ConversaoProdutos"
+                    }
+                  },
+                  "Property": "Material Origem"
+                }
+              },
+              "queryRef": "f_ConversaoProdutos.Material Origem",
+              "nativeQueryRef": "Material Origem"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_ConversaoProdutos"
+                    }
+                  },
+                  "Property": "Condição Origem"
+                }
+              },
+              "queryRef": "f_ConversaoProdutos.Condição Origem",
+              "nativeQueryRef": "Condição Origem"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_ConversaoProdutos"
+                    }
+                  },
+                  "Property": "Categoria da Origem"
+                }
+              },
+              "queryRef": "f_ConversaoProdutos.Categoria da Origem",
+              "nativeQueryRef": "Categoria da Origem"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_ConversaoProdutos"
+                    }
+                  },
+                  "Property": "Cod. Cpl Orig."
+                }
+              },
+              "queryRef": "f_ConversaoProdutos.Cod. Cpl Orig.",
+              "nativeQueryRef": "Cod. Cpl Orig."
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_ConversaoProdutos"
+                    }
+                  },
+                  "Property": "Origem é Serializado?"
+                }
+              },
+              "queryRef": "f_ConversaoProdutos.Origem é Serializado?",
+              "nativeQueryRef": "Origem é Serializado?"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_ConversaoProdutos"
+                    }
+                  },
+                  "Property": "Qtde Origem"
+                }
+              },
+              "queryRef": "Sum(f_ConversaoProdutos.Qtde Origem)",
+              "nativeQueryRef": "Qtde",
+              "displayName": "Qtde"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_ConversaoProdutos"
+                    }
+                  },
+                  "Property": "Unid. Origem"
+                }
+              },
+              "queryRef": "f_ConversaoProdutos.Unid. Origem",
+              "nativeQueryRef": "Unid. Origem"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_ConversaoProdutos"
+                    }
+                  },
+                  "Property": "Cód. Material Destino"
+                }
+              },
+              "queryRef": "f_ConversaoProdutos.Cód. Material Destino",
+              "nativeQueryRef": "Cód. Material Destino"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_ConversaoProdutos"
+                    }
+                  },
+                  "Property": "Material Destino"
+                }
+              },
+              "queryRef": "f_ConversaoProdutos.Material Destino",
+              "nativeQueryRef": "Material Destino"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_ConversaoProdutos"
+                    }
+                  },
+                  "Property": "Condição Destino"
+                }
+              },
+              "queryRef": "f_ConversaoProdutos.Condição Destino",
+              "nativeQueryRef": "Condição Destino"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_ConversaoProdutos"
+                    }
+                  },
+                  "Property": "Categoria do Destino"
+                }
+              },
+              "queryRef": "f_ConversaoProdutos.Categoria do Destino",
+              "nativeQueryRef": "Categoria do Destino"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_ConversaoProdutos"
+                    }
+                  },
+                  "Property": "Cod. Cpl Destino"
+                }
+              },
+              "queryRef": "f_ConversaoProdutos.Cod. Cpl Destino",
+              "nativeQueryRef": "Cod. Cpl Destino"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_ConversaoProdutos"
+                    }
+                  },
+                  "Property": "Destino é Serializado?"
+                }
+              },
+              "queryRef": "f_ConversaoProdutos.Destino é Serializado?",
+              "nativeQueryRef": "Destino é Serializado?"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_ConversaoProdutos"
+                    }
+                  },
+                  "Property": "Qtde Destino"
+                }
+              },
+              "queryRef": "Sum(f_ConversaoProdutos.Qtde Destino)",
+              "nativeQueryRef": "Qtde1",
+              "displayName": "Qtde"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_ConversaoProdutos"
+                    }
+                  },
+                  "Property": "Unid. Destino"
+                }
+              },
+              "queryRef": "f_ConversaoProdutos.Unid. Destino",
+              "nativeQueryRef": "Unid. Destino"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_ConversaoProdutos"
+                    }
+                  },
+                  "Property": "Dia Criação"
+                }
+              },
+              "queryRef": "f_ConversaoProdutos.Dia Criação",
+              "nativeQueryRef": "Dia Criação"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_ConversaoProdutos"
+                    }
+                  },
+                  "Property": "Hora Criação"
+                }
+              },
+              "queryRef": "f_ConversaoProdutos.Hora Criação",
+              "nativeQueryRef": "Hora Criação"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_ConversaoProdutos"
+                    }
+                  },
+                  "Property": "Usuário Criação"
+                }
+              },
+              "queryRef": "f_ConversaoProdutos.Usuário Criação",
+              "nativeQueryRef": "Usuário Criação"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_ConversaoProdutos"
+                    }
+                  },
+                  "Property": "Integridade do Serial"
+                }
+              },
+              "queryRef": "f_ConversaoProdutos.Integridade do Serial",
+              "nativeQueryRef": "Integridade do Serial"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_ConversaoProdutos"
+                    }
+                  },
+                  "Property": "Integridade Qtde."
+                }
+              },
+              "queryRef": "f_ConversaoProdutos.Integridade Qtde.",
+              "nativeQueryRef": "Integridade Qtde."
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "154.89070596449966D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "f_ConversaoProdutos.Cod. Cpl Destino"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "290.1973034159354D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "f_ConversaoProdutos.Material Origem"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "57D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(f_ConversaoProdutos.Seq. Conversão)"
+          }
+        }
+      ],
+      "columnHeaders": [
+        {
+          "properties": {
+            "columnAdjustment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'growToFit'"
+                }
+              }
+            },
+            "defaultColumnWidth": {
+              "expr": {
+                "Literal": {
+                  "Value": "90D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "values": [
+        {
+          "properties": {
+            "backColorSecondary": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#E4EBFF'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "stylePreset": [
+        {
+          "properties": {
+            "name": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Default'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": -0.3
+                    }
+                  }
+                }
+              }
+            },
+            "radius": {
+              "expr": {
+                "Literal": {
+                  "Value": "12D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "dropShadow": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": -0.6
+                    }
+                  }
+                }
+              }
+            },
+            "preset": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Custom'"
+                }
+              }
+            },
+            "shadowSpread": {
+              "expr": {
+                "Literal": {
+                  "Value": "3D"
+                }
+              }
+            },
+            "shadowDistance": {
+              "expr": {
+                "Literal": {
+                  "Value": "3D"
+                }
+              }
+            },
+            "shadowBlur": {
+              "expr": {
+                "Literal": {
+                  "Value": "5D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Conversão Analítico'"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'center'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "isHidden": true
+}

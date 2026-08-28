@@ -1,0 +1,760 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "name": "51699197a10938b12129",
+  "position": {
+    "x": 190.47067342505431,
+    "y": 913.42505430847211,
+    "z": 19000,
+    "height": 34.757422157856624,
+    "width": 257.20492396813904,
+    "tabOrder": 19000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_MateriaisRetirados"
+                    }
+                  },
+                  "Property": "Contrato"
+                }
+              },
+              "queryRef": "f_MateriaisRetirados.Contrato",
+              "nativeQueryRef": "Contrato"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_MateriaisRetirados"
+                    }
+                  },
+                  "Property": "Projeto"
+                }
+              },
+              "queryRef": "f_MateriaisRetirados.Projeto",
+              "nativeQueryRef": "Projeto"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_MateriaisRetirados"
+                    }
+                  },
+                  "Property": "OS de Retirada"
+                }
+              },
+              "queryRef": "f_MateriaisRetirados.OS de Retirada",
+              "nativeQueryRef": "OS de Retirada"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_MateriaisRetirados"
+                    }
+                  },
+                  "Property": "Natureza"
+                }
+              },
+              "queryRef": "f_MateriaisRetirados.Natureza",
+              "nativeQueryRef": "Natureza"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_MateriaisRetirados"
+                    }
+                  },
+                  "Property": "Desc. Tipo Serv."
+                }
+              },
+              "queryRef": "f_MateriaisRetirados.Desc. Tipo Serv.",
+              "nativeQueryRef": "Desc. Tipo Serv."
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_MateriaisRetirados"
+                    }
+                  },
+                  "Property": "d_DE-PARA-SERVIÇO.CATEGORIA"
+                }
+              },
+              "queryRef": "f_MateriaisRetirados.d_DE-PARA-SERVIÇO.CATEGORIA",
+              "nativeQueryRef": "Serviço",
+              "displayName": "Serviço"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_MateriaisRetirados"
+                    }
+                  },
+                  "Property": "Equipe"
+                }
+              },
+              "queryRef": "f_MateriaisRetirados.Equipe",
+              "nativeQueryRef": "Equipe"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "d_ListagemEquipes"
+                    }
+                  },
+                  "Property": "Supervisor"
+                }
+              },
+              "queryRef": "d_ListagemEquipes.Supervisor",
+              "nativeQueryRef": "Supervisor"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_MateriaisRetirados"
+                    }
+                  },
+                  "Property": "Material"
+                }
+              },
+              "queryRef": "f_MateriaisRetirados.Material",
+              "nativeQueryRef": "Material"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_MateriaisRetirados"
+                    }
+                  },
+                  "Property": "N° Serie"
+                }
+              },
+              "queryRef": "f_MateriaisRetirados.N° Serie",
+              "nativeQueryRef": "N° Serie"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_MateriaisRetirados"
+                    }
+                  },
+                  "Property": "d_DE-PARA-TECNOLOGIA.CATEGORIA"
+                }
+              },
+              "queryRef": "f_MateriaisRetirados.d_DE-PARA-TECNOLOGIA.CATEGORIA",
+              "nativeQueryRef": "Tecnologia",
+              "displayName": "Tecnologia"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_MateriaisRetirados"
+                    }
+                  },
+                  "Property": "Condição"
+                }
+              },
+              "queryRef": "f_MateriaisRetirados.Condição",
+              "nativeQueryRef": "Condição"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_MateriaisRetirados"
+                    }
+                  },
+                  "Property": "Status Movimento"
+                }
+              },
+              "queryRef": "f_MateriaisRetirados.Status Movimento",
+              "nativeQueryRef": "Movimento Posterior",
+              "displayName": "Movimento Posterior"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_MateriaisRetirados"
+                    }
+                  },
+                  "Property": "Data Movimento Posterior a Retirada"
+                }
+              },
+              "queryRef": "f_MateriaisRetirados.Data Movimento Posterior a Retirada",
+              "nativeQueryRef": "Data Movimento",
+              "displayName": "Data Movimento"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_MateriaisRetirados"
+                    }
+                  },
+                  "Property": "Status Conversao"
+                }
+              },
+              "queryRef": "f_MateriaisRetirados.Status Conversao",
+              "nativeQueryRef": "Status Conversao"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_MateriaisRetirados"
+                    }
+                  },
+                  "Property": "Conv. Condição Destino"
+                }
+              },
+              "queryRef": "f_MateriaisRetirados.Conv. Condição Destino",
+              "nativeQueryRef": "Conv. Condição",
+              "displayName": "Conv. Condição"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_MateriaisRetirados"
+                    }
+                  },
+                  "Property": "Último Movimento"
+                }
+              },
+              "queryRef": "f_MateriaisRetirados.Último Movimento",
+              "nativeQueryRef": "Último Movimento"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_MateriaisRetirados"
+                    }
+                  },
+                  "Property": "Último Movimento Data"
+                }
+              },
+              "queryRef": "f_MateriaisRetirados.Último Movimento Data",
+              "nativeQueryRef": "Data Último Movimento",
+              "displayName": "Data Último Movimento"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_MateriaisRetirados"
+                    }
+                  },
+                  "Property": "Última Condição"
+                }
+              },
+              "queryRef": "f_MateriaisRetirados.Última Condição",
+              "nativeQueryRef": "Última Condição"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_MateriaisRetirados"
+                    }
+                  },
+                  "Property": "Última Posição"
+                }
+              },
+              "queryRef": "f_MateriaisRetirados.Última Posição",
+              "nativeQueryRef": "Última Posição"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "f_MateriaisRetirados"
+                        }
+                      },
+                      "Property": "Qtde. Remov."
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(f_MateriaisRetirados.Qtde. Remov.)",
+              "nativeQueryRef": "Qtde. Retirada",
+              "displayName": "Qtde. Retirada"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "d_Calendário"
+                    }
+                  },
+                  "Property": "Data"
+                }
+              },
+              "queryRef": "d_Calendário.Data",
+              "nativeQueryRef": "Data Retirada",
+              "displayName": "Data Retirada"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "columnHeaders": [
+        {
+          "properties": {
+            "columnAdjustment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'growToFit'"
+                }
+              }
+            },
+            "defaultColumnWidth": {
+              "expr": {
+                "Literal": {
+                  "Value": "90D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "177.70569228346181D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "f_MateriaisRetirados.N° Serie"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "166.7199693770892D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "f_MateriaisRetirados.OS de Retirada"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "161.97080291970804D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "f_MateriaisRetirados.Status Movimento"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "114.85714572205919D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "f_MateriaisRetirados.Conv. Condição Destino"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "160.3571419729092D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "f_MateriaisRetirados.Último Movimento"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "121.64305926682187D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "f_MateriaisRetirados.Última Posição"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "58.89951508878953D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(f_MateriaisRetirados.Qtde. Remov.)"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "386.6318667720596D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "f_MateriaisRetirados.Material"
+          }
+        }
+      ],
+      "values": [
+        {
+          "properties": {
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Conditional": {
+                      "Cases": [
+                        {
+                          "Condition": {
+                            "Comparison": {
+                              "ComparisonKind": 0,
+                              "Left": {
+                                "Aggregation": {
+                                  "Expression": {
+                                    "Column": {
+                                      "Expression": {
+                                        "SourceRef": {
+                                          "Entity": "f_MateriaisRetirados"
+                                        }
+                                      },
+                                      "Property": "Status Movimento"
+                                    }
+                                  },
+                                  "Function": 3
+                                }
+                              },
+                              "Right": {
+                                "Literal": {
+                                  "Value": "'PENDENTE DEVOLUÇÃO'"
+                                }
+                              }
+                            },
+                            "Annotations": {
+                              "PowerBI.SQExprEvaluationKind": 1,
+                              "PowerBI.SQExprTextOperatorOption": 2
+                            }
+                          },
+                          "Value": {
+                            "Literal": {
+                              "Value": "'#FBC631'"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 1
+                }
+              }
+            ],
+            "metadata": "f_MateriaisRetirados.Status Movimento"
+          }
+        },
+        {
+          "properties": {
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Conditional": {
+                      "Cases": [
+                        {
+                          "Condition": {
+                            "Comparison": {
+                              "ComparisonKind": 0,
+                              "Left": {
+                                "Aggregation": {
+                                  "Expression": {
+                                    "Column": {
+                                      "Expression": {
+                                        "SourceRef": {
+                                          "Entity": "f_MateriaisRetirados"
+                                        }
+                                      },
+                                      "Property": "Última Posição"
+                                    }
+                                  },
+                                  "Function": 3
+                                }
+                              },
+                              "Right": {
+                                "Literal": {
+                                  "Value": "'PERDIDO VOLANTE'"
+                                }
+                              }
+                            },
+                            "Annotations": {
+                              "PowerBI.SQExprEvaluationKind": 1,
+                              "PowerBI.SQExprTextOperatorOption": 2
+                            }
+                          },
+                          "Value": {
+                            "Literal": {
+                              "Value": "'#FF636C'"
+                            }
+                          }
+                        },
+                        {
+                          "Condition": {
+                            "Comparison": {
+                              "ComparisonKind": 0,
+                              "Left": {
+                                "Aggregation": {
+                                  "Expression": {
+                                    "Column": {
+                                      "Expression": {
+                                        "SourceRef": {
+                                          "Entity": "f_MateriaisRetirados"
+                                        }
+                                      },
+                                      "Property": "Última Posição"
+                                    }
+                                  },
+                                  "Function": 3
+                                }
+                              },
+                              "Right": {
+                                "Literal": {
+                                  "Value": "'PERDIDO'"
+                                }
+                              }
+                            },
+                            "Annotations": {
+                              "PowerBI.SQExprEvaluationKind": 1,
+                              "PowerBI.SQExprTextOperatorOption": 2
+                            }
+                          },
+                          "Value": {
+                            "Literal": {
+                              "Value": "'#FF636C'"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 1
+                }
+              }
+            ],
+            "metadata": "f_MateriaisRetirados.Última Posição"
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "stylePreset": [
+        {
+          "properties": {
+            "name": {
+              "expr": {
+                "Literal": {
+                  "Value": "'None'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": -0.3
+                    }
+                  }
+                }
+              }
+            },
+            "radius": {
+              "expr": {
+                "Literal": {
+                  "Value": "12D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "dropShadow": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": -0.6
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Materiais Retirados - Analítico'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

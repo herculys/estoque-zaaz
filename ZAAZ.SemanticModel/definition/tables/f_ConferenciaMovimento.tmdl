@@ -1,0 +1,185 @@
+table f_ConferenciaMovimento
+	lineageTag: d762bf14-5e25-4e14-9ac6-56380f74c059
+
+	column Contrato
+		dataType: string
+		lineageTag: 2d38a221-d56a-41fa-b7e2-99bb57957bb4
+		summarizeBy: none
+		sourceColumn: Contrato
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Projeto
+		dataType: string
+		lineageTag: 03d3b203-17ec-4eeb-af3c-57e3ed60c5b4
+		summarizeBy: none
+		sourceColumn: Projeto
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Cod.Mat.'
+		dataType: string
+		lineageTag: cb200be8-9d32-4e89-9e05-432d7cb2e336
+		summarizeBy: none
+		sourceColumn: Cod.Mat.
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Descrição Material'
+		dataType: string
+		lineageTag: d00f62b0-aaa0-45da-ad45-2511476c6e28
+		summarizeBy: none
+		sourceColumn: Descrição Material
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Cod.Compl.'
+		dataType: string
+		lineageTag: 7d98ffaa-a01c-4866-a26c-0294ced796ab
+		summarizeBy: none
+		sourceColumn: Cod.Compl.
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Equipe
+		dataType: string
+		lineageTag: 00a2fb4c-f75e-4e31-ad2b-b3f0d445e475
+		summarizeBy: none
+		sourceColumn: Equipe
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Nome
+		dataType: string
+		lineageTag: 39b69a3b-544f-40e6-9a8b-8f27acf223d0
+		summarizeBy: none
+		sourceColumn: Nome
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Nº. Doc'
+		dataType: string
+		lineageTag: 546b6d80-f18e-4e98-a523-9a9abc7a5322
+		summarizeBy: none
+		sourceColumn: Nº. Doc
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Observação
+		dataType: string
+		lineageTag: 1197053e-5c7d-4a78-8d59-f2bd0e4cb4df
+		summarizeBy: none
+		sourceColumn: Observação
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Entrada
+		dataType: int64
+		formatString: 0
+		lineageTag: a1684796-00d1-4dfd-b83c-0b30f89a519b
+		summarizeBy: sum
+		sourceColumn: Entrada
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Saída
+		dataType: int64
+		formatString: 0
+		lineageTag: 05c0bc07-29e4-427f-b952-63edd30918d5
+		summarizeBy: sum
+		sourceColumn: Saída
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Tipo Movimento'
+		dataType: string
+		lineageTag: e8f1f804-6dc0-4862-8b9a-c779897a0f14
+		summarizeBy: none
+		sourceColumn: Tipo Movimento
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Usuario Baixa'
+		dataType: string
+		lineageTag: e8e02a2a-4b46-44fb-82ed-0e1e9d79ae95
+		summarizeBy: none
+		sourceColumn: Usuario Baixa
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Usuario Criação'
+		dataType: string
+		lineageTag: 5cbe19eb-541c-4729-93dd-02987d8e625c
+		summarizeBy: none
+		sourceColumn: Usuario Criação
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'DataHora Baixa'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 3a9ba48f-52a5-4b68-aa86-9e489b8afa61
+		summarizeBy: none
+		sourceColumn: DataHora Baixa
+
+		variation Variation
+			isDefault
+			relationship: 295ac2fc-1bbd-4daa-ad65-6ec45f6dd0f6
+			defaultHierarchy: LocalDateTable_8592104d-e495-4f7d-842f-ee5822d23ead.'Hierarquia de datas'
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition f_ConferenciaMovimento = m
+		mode: import
+		queryGroup: 'Tabelas Principais'
+		source =
+				let
+				    Fonte = Folder.Files(#"Pasta Raiz" & "\Conferência de Movimento"),
+				    #"Arquivos Ocultos Filtrados1" = Table.SelectRows(Fonte, each [Attributes]?[Hidden]? <> true),
+				    #"Invocar Função Personalizada1" = Table.AddColumn(#"Arquivos Ocultos Filtrados1", "Transformar Arquivo (2)", each #"Transformar Arquivo (2)"([Content])),
+				    #"Colunas Renomeadas1" = Table.RenameColumns(#"Invocar Função Personalizada1", {"Name", "Nome da Origem"}),
+				    #"Outras Colunas Removidas1" = Table.SelectColumns(#"Colunas Renomeadas1",{"Transformar Arquivo (2)"}),
+				    #"Coluna de Tabela Expandida1" = Table.ExpandTableColumn(#"Outras Colunas Removidas1", "Transformar Arquivo (2)", Table.ColumnNames(#"Transformar Arquivo (2)"(#"Arquivo de Amostra (2)"))),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Coluna de Tabela Expandida1",{{"Contrato", type text}, {"Projeto", type text}, {"Cod.Mat.", type text}, {"Descrição Material", type text}, {"Cod.Compl.", type text}, {"Equipe", type text}, {"Nome", type text}, {"Nº. Doc", type text}, {"Observação", type text}, {"Entrada", Int64.Type}, {"Saída", Int64.Type}, {"Tipo Movimento", type text}, {"Data Movimento", type date}, {"Usuario Baixa", type text}, {"Data Baixa", type date}, {"Hora Baixa", type time}, {"Usuario Criação", type text}, {"Data Criação", type date}, {"Hora Criação", type time}}),
+				    #"Personalização Adicionada" = Table.AddColumn(#"Tipo Alterado", "DataHora Baixa", each try #datetime(Date.Year([Data Baixa]), Date.Month([Data Baixa]), Date.Day([Data Baixa]), Time.Hour([Hora Baixa]), Time.Minute([Hora Baixa]), Time.Second([Hora Baixa])) otherwise null),
+				    #"Tipo Alterado1" = Table.TransformColumnTypes(#"Personalização Adicionada",{{"DataHora Baixa", type datetime}}),
+				    #"Colunas Removidas" = Table.RemoveColumns(#"Tipo Alterado1",{"Data Baixa", "Hora Baixa", "Data Criação", "Hora Criação", "Data Movimento"})
+				in
+				    #"Colunas Removidas"
+
+	changedProperty = IsHidden
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

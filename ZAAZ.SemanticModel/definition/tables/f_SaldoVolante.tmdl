@@ -1,0 +1,265 @@
+table f_SaldoVolante
+	lineageTag: f7c12807-ba20-4618-a4be-9e44f7079ab6
+
+	measure 'Qtde. Aplic. Novo' = ```
+			
+			/*
+			CALCULATE(
+			    SUM(f_MateriaisAplicados[Qtde. Aplic.]), 
+			    f_MateriaisAplicados[Condição] = "NOVO"
+			)
+			*/
+			VAR aplicados = (ISINSCOPE(d_ListagemEquipes[Supervisor]) || ISINSCOPE(d_ListagemEquipes[Nome]))  && NOT ISINSCOPE(f_SaldoVolante[d_DE-PARA-TECNOLOGIA.CATEGORIA])
+			RETURN
+			
+			IF(aplicados,
+			    CALCULATE(
+			        SUM(f_MateriaisAplicados[Qtde. Aplic.]), 
+			        f_MateriaisAplicados[Condição] = "NOVO"
+			    ),
+			    BLANK()
+			)
+			```
+		formatString: 0
+		lineageTag: a0e24b59-1fba-498b-9edb-cbc84a4df2f2
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Qtde. Aplic. REAP' = ```
+			
+			/*
+			CALCULATE(
+			    SUM(f_MateriaisAplicados[Qtde. Aplic.]), 
+			    f_MateriaisAplicados[Condição] = "REAPROVEITADO"
+			)
+			*/
+			
+			VAR aplicados = (ISINSCOPE(d_ListagemEquipes[Supervisor]) || ISINSCOPE(d_ListagemEquipes[Nome]))  && NOT ISINSCOPE(f_SaldoVolante[d_DE-PARA-TECNOLOGIA.CATEGORIA])
+			RETURN
+			
+			IF(aplicados,
+			    CALCULATE(
+			    SUM(f_MateriaisAplicados[Qtde. Aplic.]), 
+			    f_MateriaisAplicados[Condição] = "REAPROVEITADO"
+			    ),
+			    BLANK()
+			)
+			```
+		formatString: 0
+		lineageTag: c42c9c01-ce92-4469-b89d-f99269b17293
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Idade média' = AVERAGE(f_SaldoVolante[Posse (Dias)])
+		lineageTag: 50c4dc79-29e1-46c4-808e-7217c438cfb0
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Saldo txt' =
+			
+			"(SALDO: "& SUM(f_SaldoVolante[SALDO])&")"
+		lineageTag: 940bf6ce-379d-4591-aa52-8308acbe61d7
+
+	column CONTRATO
+		dataType: string
+		lineageTag: dc7aac9c-140e-4513-acd3-dd5f0d537355
+		summarizeBy: none
+		sourceColumn: CONTRATO
+
+		annotation SummarizationSetBy = Automatic
+
+	column PROJETO
+		dataType: string
+		lineageTag: 1288ddef-59dd-4c53-8bf6-8dd3fd5d3a49
+		summarizeBy: none
+		sourceColumn: PROJETO
+
+		annotation SummarizationSetBy = Automatic
+
+	column EQUIPE
+		dataType: int64
+		formatString: 0
+		lineageTag: b78a47e4-894e-4246-88b9-9c9712f8200a
+		summarizeBy: none
+		sourceColumn: EQUIPE
+
+		annotation SummarizationSetBy = Automatic
+
+	column NOME
+		dataType: string
+		lineageTag: 4c136030-fee0-48c2-aaad-96da0cf18eca
+		summarizeBy: none
+		sourceColumn: NOME
+
+		annotation SummarizationSetBy = Automatic
+
+	column MATERIAL
+		dataType: string
+		lineageTag: 9b0261dd-e0b9-4415-b27c-643a25a77ce1
+		summarizeBy: none
+		sourceColumn: MATERIAL
+
+		annotation SummarizationSetBy = Automatic
+
+	column DESCRICAO
+		dataType: string
+		lineageTag: 766d737a-2f7f-4ed2-b3ab-1301851f9d8a
+		summarizeBy: none
+		sourceColumn: DESCRICAO
+
+		annotation SummarizationSetBy = Automatic
+
+	column COMPLEMENTAR
+		dataType: string
+		lineageTag: e07bb5f4-013c-4636-b7c2-1630d5dffafc
+		summarizeBy: none
+		sourceColumn: COMPLEMENTAR
+
+		annotation SummarizationSetBy = Automatic
+
+	column SALDO
+		dataType: int64
+		formatString: 0
+		lineageTag: 51a23220-dbd7-4378-af75-899111d9407c
+		summarizeBy: sum
+		sourceColumn: SALDO
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Posse (Dias)' = ```
+			
+			------------------------------------ Código simples ---------------------------------------------------------------------------------------
+			
+			//LOOKUPVALUE('f_SituaçãoMateriaisSaldoVolante'[Posse (Dias)], 'f_SituaçãoMateriaisSaldoVolante'[Nº Serial], f_SaldoVolante[COMPLEMENTAR], BLANK())
+			
+			 ----------------------------------- Código recente ---------------------------------------------------------------------------------------
+			// 1. Armazenar os valores da linha atual em variáveis
+			VAR vNome = [NOME]
+			VAR vSerial = [COMPLEMENTAR]
+			VAR vDescricao = [DESCRICAO]
+			VAR vSaldo = [SALDO]
+			RETURN
+			// 2. Saída rápida: Se não houver serial, não perde tempo calculando
+			IF (
+			    ISBLANK(vSerial) || vSerial = "-" || vSaldo < 0,
+			    BLANK(),
+			    
+			    // 3. Busca iterando apenas a tabela virtual minimizada (sem IFERROR)
+			    MINX (
+			        FILTER (
+			            ALL (
+			                'f_SituaçãoMateriaisSaldoVolante'[Nº Serial],
+			                'f_SituaçãoMateriaisSaldoVolante'[Nome],
+			                'f_SituaçãoMateriaisSaldoVolante'[Descrição Material],
+			                'f_SituaçãoMateriaisSaldoVolante'[Posse (Dias)]
+			            ),
+			            // 4. Uso do operador '&&' com a condição mais restritiva (Nº Serial) primeiro
+			            'f_SituaçãoMateriaisSaldoVolante'[Nº Serial] = vSerial &&
+			            'f_SituaçãoMateriaisSaldoVolante'[Nome] = vNome &&
+			            'f_SituaçãoMateriaisSaldoVolante'[Descrição Material] = vDescricao
+			        ),
+			        'f_SituaçãoMateriaisSaldoVolante'[Posse (Dias)]
+			    )
+			)
+			
+			------------------------------------ Código antigo --------------------------------------------------------------------------------------- */
+			/* ----------------------
+			-- Códigos antigos
+			Data Hora da Retirada = VAR vDescricao = COALESCE ( 'f_SaldoVolante'[DESCRICAO], "" )
+			VAR vComplementar = TRIM ( COALESCE ( 'f_SaldoVolante'[COMPLEMENTAR], "" ) )
+			RETURN
+			    IF (
+			        CONTAINSSTRING ( vDescricao, "RET-" )
+			            && vComplementar <> ""
+			            && vComplementar <> "-",
+			        CALCULATE (
+			            MAX ( 'f_MateriaisRetirados'[DataHora Retirada] ),
+			            FILTER (
+			                'f_MateriaisRetirados',
+			                COALESCE ( 'f_MateriaisRetirados'[N° Serie], "" )  = vComplementar
+			            )
+			        )
+			    )
+			*/ ----------------------
+			
+			/* ----------------------
+			Dias desde Retirada = IF (
+			    NOT ISBLANK ( 'f_SaldoVolante'[Data Hora da Retirada] ),
+			    DATEDIFF ( 'f_SaldoVolante'[Data Hora da Retirada], TODAY (), DAY )
+			)
+			*/ ----------------------
+			```
+		dataType: int64
+		formatString: 0
+		lineageTag: 84f2b73c-0f35-48d4-a181-88e474734e71
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Condição
+		dataType: string
+		lineageTag: 04d787f8-8281-4ceb-a3de-e5b44601fcc5
+		summarizeBy: none
+		sourceColumn: Condição
+
+		annotation SummarizationSetBy = Automatic
+
+	column Serializado?
+		dataType: string
+		lineageTag: d8e7ef3c-3bf9-4f1f-9854-e4b541c09ca1
+		summarizeBy: none
+		sourceColumn: Serializado?
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'd_DE-PARA-TECNOLOGIA.CATEGORIA'
+		dataType: string
+		lineageTag: b38f765a-aeab-41d8-8813-6a00a8a059ee
+		summarizeBy: none
+		sourceColumn: d_DE-PARA-TECNOLOGIA.CATEGORIA
+
+		annotation SummarizationSetBy = Automatic
+
+	partition f_SaldoVolante = m
+		mode: import
+		queryGroup: Estoque
+		source = ```
+				let
+				    Fonte = Csv.Document(File.Contents(#"Pasta Raiz" & "\Saldo Volante\Saldo Volante.csv"),[Delimiter=";", Columns=16, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(Fonte, [PromoteAllScalars=true]),
+				    Personalizar1 = Table.TransformColumns(#"Cabeçalhos Promovidos", {}, each if _ is text then Text.TrimStart(_, "'") else _),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(Personalizar1,{{"COD_CCUSTO", type text}, {"DESC_CCUSTO", type text}, {"CONTRATO", type text}, {"PROJETO", type text}, {"EQUIPE", type text}, {"NOME", type text}, {"MATERIAL", type text}, {"DESCRICAO", type text}, {"COMPLEMENTAR", type text}, {"ENTRADA", Int64.Type}, {"SAIDA", Int64.Type}, {"APLICADO", Int64.Type}, {"REMOVIDO", Int64.Type}, {"SALDO", Int64.Type}, {"VALOR_UNID", type number}, {"VALOR_TOTAL", type number}}),
+				    #"Erros Substituídos" = Table.ReplaceErrorValues(#"Tipo Alterado", {{"ENTRADA", null}}),
+				    #"Colunas Removidas" = Table.RemoveColumns(#"Erros Substituídos",{"COD_CCUSTO", "DESC_CCUSTO", "VALOR_UNID", "VALOR_TOTAL", "ENTRADA", "SAIDA", "APLICADO", "REMOVIDO"}),
+				    #"Tipo Alterado1" = Table.TransformColumnTypes(#"Colunas Removidas",{{"EQUIPE", Int64.Type}}),
+				    #"Erros Substituídos1" = Table.ReplaceErrorValues(#"Tipo Alterado1", {{"EQUIPE", null}}),
+				    // Criando a coluna de Condição Aplicada (Lógica 1)
+				    Condição = Table.AddColumn(#"Erros Substituídos1", "Condição", each 
+				    let 
+				        Cod = Text.Upper(Text.From([DESCRICAO])) 
+				    in
+				        if Text.Contains(Cod, "DEF-") or Text.Contains(Cod, "DET-") then "DEFEITO"
+				        else if Text.Contains(Cod, "RET-") then "RETIRADO"
+				        else if Text.Contains(Cod, "REAP-") or Text.Contains(Cod, "REA-") then "REAPROVEITADO"
+				        else if Text.Contains(Cod, "SUC-") then "DESUSO"
+				        else if [DESCRICAO] <> null and [DESCRICAO] <> "" then "NOVO"
+				        else "VAZIO"
+				    ),
+				
+				    // Criando a coluna de Verificação de N° de Série (Lógica 2)
+				    NumSerie = Table.AddColumn(#"Condição", "Serializado?", each 
+				        if [COMPLEMENTAR] = null or [COMPLEMENTAR] = "-" or [COMPLEMENTAR] = "" then "NÃO" 
+				        else "SIM"
+				    ),
+				    #"Tipo Alterado2" = Table.TransformColumnTypes(NumSerie,{{"Condição", type text}, {"Serializado?", type text}}),
+				    #"Consultas Mescladas1" = Table.NestedJoin(#"Tipo Alterado2", {"DESCRICAO"}, #"d_DE-PARA-TECNOLOGIA", {"EQUIPAMENTO"}, "d_DE-PARA-TECNOLOGIA", JoinKind.LeftOuter),
+				    #"d_DE-PARA-TECNOLOGIA Expandido" = Table.ExpandTableColumn(#"Consultas Mescladas1", "d_DE-PARA-TECNOLOGIA", {"CATEGORIA"}, {"d_DE-PARA-TECNOLOGIA.CATEGORIA"}),
+				    #"Valor Substituído1" = Table.ReplaceValue(#"d_DE-PARA-TECNOLOGIA Expandido",null,"NÃO MAPEADO",Replacer.ReplaceValue,{"d_DE-PARA-TECNOLOGIA.CATEGORIA"})
+				in
+				    #"Valor Substituído1"
+				```
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,196 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "c5f0bf687c070ed4aecc",
+  "displayName": "Tecnologia/Plano",
+  "displayOption": "FitToPage",
+  "height": 1080,
+  "width": 1920,
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "b33b619e2cdc895221b0",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "f_MateriaisAplicados"
+              }
+            },
+            "Property": "Serializado?"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "f",
+              "Entity": "f_MateriaisAplicados",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "f"
+                          }
+                        },
+                        "Property": "Serializado?"
+                      }
+                    }
+                  ],
+                  "Values": [
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'SIM'"
+                        }
+                      }
+                    ]
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        "howCreated": "User"
+      }
+    ]
+  },
+  "objects": {
+    "background": [
+      {
+        "properties": {
+          "image": {
+            "image": {
+              "name": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'background.png'"
+                  }
+                }
+              },
+              "url": {
+                "expr": {
+                  "ResourcePackageItem": {
+                    "PackageName": "RegisteredResources",
+                    "PackageType": 1,
+                    "ItemName": "background15237646199380028.png"
+                  }
+                }
+              },
+              "scaling": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'Fit'"
+                  }
+                }
+              }
+            }
+          },
+          "transparency": {
+            "expr": {
+              "Literal": {
+                "Value": "0D"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "visibility": "HiddenInViewMode",
+  "visualInteractions": [
+    {
+      "source": "d85789c192be9800937c",
+      "target": "755efe3637061e139c14",
+      "type": "DataFilter"
+    },
+    {
+      "source": "d85789c192be9800937c",
+      "target": "80727f44742b0d1ec17e",
+      "type": "DataFilter"
+    },
+    {
+      "source": "d85789c192be9800937c",
+      "target": "aaf2b2b231aa0c57510c",
+      "type": "NoFilter"
+    },
+    {
+      "source": "755efe3637061e139c14",
+      "target": "d85789c192be9800937c",
+      "type": "DataFilter"
+    },
+    {
+      "source": "755efe3637061e139c14",
+      "target": "aaf2b2b231aa0c57510c",
+      "type": "DataFilter"
+    },
+    {
+      "source": "755efe3637061e139c14",
+      "target": "80727f44742b0d1ec17e",
+      "type": "DataFilter"
+    },
+    {
+      "source": "80727f44742b0d1ec17e",
+      "target": "d85789c192be9800937c",
+      "type": "DataFilter"
+    },
+    {
+      "source": "80727f44742b0d1ec17e",
+      "target": "755efe3637061e139c14",
+      "type": "DataFilter"
+    },
+    {
+      "source": "80727f44742b0d1ec17e",
+      "target": "aaf2b2b231aa0c57510c",
+      "type": "DataFilter"
+    },
+    {
+      "source": "aaf2b2b231aa0c57510c",
+      "target": "80727f44742b0d1ec17e",
+      "type": "DataFilter"
+    },
+    {
+      "source": "aaf2b2b231aa0c57510c",
+      "target": "755efe3637061e139c14",
+      "type": "DataFilter"
+    },
+    {
+      "source": "aaf2b2b231aa0c57510c",
+      "target": "d85789c192be9800937c",
+      "type": "DataFilter"
+    },
+    {
+      "source": "1b014c867da7c87dbb5a",
+      "target": "755efe3637061e139c14",
+      "type": "DataFilter"
+    },
+    {
+      "source": "1b014c867da7c87dbb5a",
+      "target": "d85789c192be9800937c",
+      "type": "DataFilter"
+    },
+    {
+      "source": "1b014c867da7c87dbb5a",
+      "target": "80727f44742b0d1ec17e",
+      "type": "DataFilter"
+    },
+    {
+      "source": "1b014c867da7c87dbb5a",
+      "target": "aaf2b2b231aa0c57510c",
+      "type": "DataFilter"
+    },
+    {
+      "source": "d85789c192be9800937c",
+      "target": "fcd3074c4a485e508302",
+      "type": "NoFilter"
+    }
+  ]
+}

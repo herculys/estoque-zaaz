@@ -1,0 +1,284 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "990d44f52e2c62dc2d52",
+  "position": {
+    "x": 190.47067342505431,
+    "y": 912.0347574221579,
+    "z": 14000,
+    "height": 33,
+    "width": 244.69225199131066,
+    "tabOrder": 14000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_SaldoEstoque"
+                    }
+                  },
+                  "Property": "Grupo"
+                }
+              },
+              "queryRef": "f_SaldoEstoque.Grupo",
+              "nativeQueryRef": "Grupo"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_SaldoEstoque"
+                    }
+                  },
+                  "Property": "Codmat"
+                }
+              },
+              "queryRef": "f_SaldoEstoque.Codmat",
+              "nativeQueryRef": "Codmat"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_SaldoEstoque"
+                    }
+                  },
+                  "Property": "Descrição"
+                }
+              },
+              "queryRef": "f_SaldoEstoque.Descrição",
+              "nativeQueryRef": "Descrição"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_SaldoEstoque"
+                    }
+                  },
+                  "Property": "CONDIÇÃO"
+                }
+              },
+              "queryRef": "f_SaldoEstoque.CONDIÇÃO",
+              "nativeQueryRef": "CONDIÇÃO"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_SaldoEstoque"
+                    }
+                  },
+                  "Property": "CATEGORIA"
+                }
+              },
+              "queryRef": "f_SaldoEstoque.CATEGORIA",
+              "nativeQueryRef": "CATEGORIA"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_SaldoEstoque"
+                    }
+                  },
+                  "Property": "Unid"
+                }
+              },
+              "queryRef": "f_SaldoEstoque.Unid",
+              "nativeQueryRef": "Unid"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "f_SaldoEstoque"
+                        }
+                      },
+                      "Property": "Saldo em Estoque"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(f_SaldoEstoque.Saldo em Estoque)",
+              "nativeQueryRef": "Soma de Saldo em Estoque"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "f_SaldoEstoque"
+                        }
+                      },
+                      "Property": "Prog. RM"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(f_SaldoEstoque.Prog. RM)",
+              "nativeQueryRef": "Soma de Prog. RM"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "f_SaldoEstoque"
+                        }
+                      },
+                      "Property": "Prog. TM"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(f_SaldoEstoque.Prog. TM)",
+              "nativeQueryRef": "Soma de Prog. TM"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "f_SaldoEstoque"
+                        }
+                      },
+                      "Property": "Saldo Disponível"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(f_SaldoEstoque.Saldo Disponível)",
+              "nativeQueryRef": "Soma de Saldo Disponível"
+            }
+          ],
+          "showAll": true
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": -0.3
+                    }
+                  }
+                }
+              }
+            },
+            "radius": {
+              "expr": {
+                "Literal": {
+                  "Value": "12D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "dropShadow": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": -0.6
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "14D"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Saldo em Estoque - Analítico'"
+                }
+              }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

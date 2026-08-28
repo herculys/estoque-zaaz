@@ -1,0 +1,140 @@
+model Model
+	culture: pt-BR
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: pt-BR
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+queryGroup 'Devolução Equip Aniel'
+
+	annotation PBI_QueryGroupOrder = 1
+
+queryGroup 'Pasta do Projeto'
+
+	annotation PBI_QueryGroupOrder = 0
+
+queryGroup 'Tabelas Principais'
+
+	annotation PBI_QueryGroupOrder = 4
+
+queryGroup 'Devolução Equip Aniel\Conferência de Movimento'
+
+	annotation PBI_QueryGroupOrder = 1
+
+queryGroup 'Devolução Equip Aniel\Conferência de Movimento\Transformar Arquivo de Conferencia movimento'
+
+	annotation PBI_QueryGroupOrder = 0
+
+queryGroup 'Devolução Equip Aniel\Conferência de Movimento\Transformar Arquivo de Conferencia movimento\Consultas Auxiliares'
+
+	annotation PBI_QueryGroupOrder = 0
+
+queryGroup 'Devolução Equip Aniel\Masteriais Aplicados & Retirados'
+
+	annotation PBI_QueryGroupOrder = 2
+
+queryGroup 'Devolução Equip Aniel\Masteriais Aplicados & Retirados\Transformar Arquivo de Materiais Aplicados & Retirados'
+
+	annotation PBI_QueryGroupOrder = 0
+
+queryGroup 'Devolução Equip Aniel\Masteriais Aplicados & Retirados\Transformar Arquivo de Materiais Aplicados & Retirados\Consultas Auxiliares'
+
+	annotation PBI_QueryGroupOrder = 0
+
+queryGroup Estoque
+
+	annotation PBI_QueryGroupOrder = 5
+
+queryGroup 'DE PARA'
+
+	annotation PBI_QueryGroupOrder = 3
+
+queryGroup 'IF - Analítico'
+
+	annotation PBI_QueryGroupOrder = 6
+
+queryGroup 'IF - Analítico\Transformar Arquivo de Inventário Fìsico - Analítico'
+
+	annotation PBI_QueryGroupOrder = 0
+
+queryGroup 'IF - Analítico\Transformar Arquivo de Inventário Fìsico - Analítico\Consultas Auxiliares'
+
+	annotation PBI_QueryGroupOrder = 0
+
+queryGroup 'Transformar Arquivo de Saldo de Saídas RM&DM - Analítico'
+
+	annotation PBI_QueryGroupOrder = 14
+
+queryGroup 'Transformar Arquivo de Saldo de Saídas RM&DM - Analítico\Consultas Auxiliares'
+
+	annotation PBI_QueryGroupOrder = 0
+
+queryGroup 'Transformar Arquivo de Conversão de Produtos'
+
+	annotation PBI_QueryGroupOrder = 16
+
+queryGroup 'Transformar Arquivo de Conversão de Produtos\Consultas Auxiliares'
+
+	annotation PBI_QueryGroupOrder = 0
+
+queryGroup 'Transformar Arquivo de Solicitações'
+
+	annotation PBI_QueryGroupOrder = 18
+
+queryGroup 'Transformar Arquivo de Solicitações\Consultas Auxiliares'
+
+	annotation PBI_QueryGroupOrder = 0
+
+/// Erros nas consultas que foram carregadas em 31/07/2026 16:08:44.
+queryGroup 'Erros na Consulta - 31/07/2026 16:08:44'
+
+	annotation PBI_QueryGroupOrder = 20
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["Pasta Raiz","Parâmetro2","Arquivo de Amostra (2)","Transformar Arquivo (2)","Transformar o Arquivo de Exemplo (2)","f_ConferenciaMovimento","Parâmetro1","Arquivo de Amostra","Transformar Arquivo","Transformar o Arquivo de Exemplo","f_MateriaisAplicados","f_MateriaisRetirados","f_RM&DM","f_InventarioFisico","f_ConversaoProdutos","f_SaldoEstoque","f_SaldoVolante","f_SituaçãoMateriaisSaldoVolante","d_Calendário","d_DE-PARA-TECNOLOGIA","d_DE-PARA-SERVIÇO","d_ListagemEquipes","d_ListagemProdutos","_Updated","f_Backlog","Parâmetro3","Transformar o Arquivo de Exemplo (3)","Arquivo de Amostra (3)","Transformar Arquivo (3)","Parâmetro4","Transformar o Arquivo de Exemplo (4)","Arquivo de Amostra (4)","Transformar Arquivo (4)","Parâmetro5","Transformar o Arquivo de Exemplo (5)","Arquivo de Amostra (5)","Transformar Arquivo (5)","Parâmetro6","Transformar o Arquivo de Exemplo (6)","f_Solicitacoes","Arquivo de Amostra (6)","Transformar Arquivo (6)"]
+
+annotation PBI_ProTooling = ["TMDLView_Desktop","MCP-PBIModeling","DaxQueryView_Desktop","DevMode"]
+
+annotation __TEdtr = 1
+
+ref table DateTableTemplate_57186e86-8106-49be-a5ff-31a4bd3eb534
+ref table f_MateriaisAplicados
+ref table f_MateriaisRetirados
+ref table f_SaldoVolante
+ref table d_Calendário
+ref table LocalDateTable_164f070a-558b-4d2b-87df-4a7bc7d919a1
+ref table LocalDateTable_4140487e-53b5-4437-8968-fe9ab460a1fa
+ref table d_ListagemEquipes
+ref table d_ListagemProdutos
+ref table _Updated
+ref table LocalDateTable_f3027e81-cc0e-454e-9835-5efc34915420
+ref table LocalDateTable_80071d68-f2ab-463c-a0f9-bbd572bc9109
+ref table LocalDateTable_8bcf7ceb-8b34-40f2-8e6a-59eca119b4c4
+ref table f_ConferenciaMovimento
+ref table LocalDateTable_8592104d-e495-4f7d-842f-ee5822d23ead
+ref table LocalDateTable_1af5123f-e4fa-43d4-a211-5f57d32251c4
+ref table LocalDateTable_aa9c6f43-58e6-4241-b423-3e5222208e4b
+ref table d_DE-PARA-TECNOLOGIA
+ref table d_DE-PARA-SERVIÇO
+ref table f_SaldoEstoque
+ref table LocalDateTable_e531521c-29e0-4cbd-acc4-67d752e98bf4
+ref table f_SituaçãoMateriaisSaldoVolante
+ref table f_Backlog
+ref table LocalDateTable_4270335a-3bc8-4c25-9f9a-73b8d56222c9
+ref table f_InventarioFisico
+ref table LocalDateTable_3214fae5-33ba-45e3-83fc-15e9f655a9b5
+ref table LocalDateTable_879ea78a-8ef0-43c3-95da-e36507348d8f
+ref table LocalDateTable_39a02517-0f41-43d9-8008-52449d3f682b
+ref table LocalDateTable_2b57718c-3be0-4833-84ea-98cd7da29c03
+ref table LocalDateTable_be8ffa8d-9194-40fe-b10f-88deb6c3d5b4
+ref table LocalDateTable_e6aac5b9-1786-4572-a9fd-dac988300a9d
+ref table f_RM&DM
+ref table f_ConversaoProdutos
+ref table f_Solicitacoes
+ref table LocalDateTable_651304ab-e45c-4a63-bada-353eba3f8e0e
+ref table LocalDateTable_7089dae6-5fe1-4ee5-810c-f2787544ebe0
+
+ref cultureInfo pt-BR
+

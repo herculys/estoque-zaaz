@@ -1,0 +1,171 @@
+relationship 0ae9a7ed-2109-48c7-bd55-b0aaffae57ba
+	joinOnDateBehavior: datePartOnly
+	fromColumn: d_Calendário.Data
+	toColumn: LocalDateTable_164f070a-558b-4d2b-87df-4a7bc7d919a1.Date
+
+relationship 90431eef-0793-47fb-8487-ebbd8478c1b6
+	joinOnDateBehavior: datePartOnly
+	fromColumn: d_Calendário.'Início do Mês'
+	toColumn: LocalDateTable_4140487e-53b5-4437-8968-fe9ab460a1fa.Date
+
+relationship fece9d76-2fee-4bae-acc8-a689125bfe63
+	joinOnDateBehavior: datePartOnly
+	fromColumn: _Updated.DataHoraAtualização
+	toColumn: LocalDateTable_f3027e81-cc0e-454e-9835-5efc34915420.Date
+
+relationship AutoDetected_b43c0341-5db3-4a98-90e6-063892b08d5e
+	fromColumn: f_SaldoVolante.EQUIPE
+	toColumn: d_ListagemEquipes.Equipe
+
+relationship AutoDetected_5a45c28b-0997-498f-85ed-2aa72182f6d0
+	fromColumn: f_MateriaisAplicados.'Cód. Material'
+	toColumn: d_ListagemProdutos.'Cód.Material'
+
+relationship AutoDetected_98842d5a-b786-4bf0-af1b-3aae76276808
+	fromColumn: f_MateriaisRetirados.'Cód. Material'
+	toColumn: d_ListagemProdutos.'Cód.Material'
+
+relationship AutoDetected_4fa82039-5c0b-4ed8-b276-4bc5f2fb39e6
+	fromColumn: f_SaldoVolante.MATERIAL
+	toColumn: d_ListagemProdutos.'Cód.Material'
+
+relationship 19a0bc31-2423-e507-5c9a-6179d04bff74
+	fromColumn: f_MateriaisAplicados.'Data Aplicação'
+	toColumn: d_Calendário.Data
+
+relationship dc8f920c-dc09-a910-703e-0c191d3f3016
+	fromColumn: f_MateriaisRetirados.'Data Aplicação'
+	toColumn: d_Calendário.Data
+
+relationship f2b75004-c6bb-41c1-8b75-b81843217106
+	joinOnDateBehavior: datePartOnly
+	fromColumn: f_MateriaisAplicados.'DataHora Aplicacao'
+	toColumn: LocalDateTable_80071d68-f2ab-463c-a0f9-bbd572bc9109.Date
+
+relationship 0cbd7cca-faa2-40c2-a722-5a431e6067f4
+	joinOnDateBehavior: datePartOnly
+	fromColumn: f_MateriaisRetirados.'DataHora Retirada'
+	toColumn: LocalDateTable_8bcf7ceb-8b34-40f2-8e6a-59eca119b4c4.Date
+
+relationship 295ac2fc-1bbd-4daa-ad65-6ec45f6dd0f6
+	joinOnDateBehavior: datePartOnly
+	fromColumn: f_ConferenciaMovimento.'DataHora Baixa'
+	toColumn: LocalDateTable_8592104d-e495-4f7d-842f-ee5822d23ead.Date
+
+relationship 1860c47d-a982-494f-b611-41a1fe617b32
+	joinOnDateBehavior: datePartOnly
+	fromColumn: f_MateriaisRetirados.'Data Movimento Posterior a Retirada'
+	toColumn: LocalDateTable_1af5123f-e4fa-43d4-a211-5f57d32251c4.Date
+
+relationship fdc12f01-207c-42a8-8000-180a52c010e0
+	joinOnDateBehavior: datePartOnly
+	fromColumn: f_MateriaisRetirados.'Data Conv. Posterior a Retirada'
+	toColumn: LocalDateTable_aa9c6f43-58e6-4241-b423-3e5222208e4b.Date
+
+relationship AutoDetected_ccbe7631-41b6-461b-bb07-723d42915e33
+	fromColumn: f_MateriaisAplicados.'Desc. Tipo Serv.'
+	toColumn: d_DE-PARA-SERVIÇO.'DESC. TIPO SERV.'
+
+relationship 066079f7-ec9c-4b9a-98d7-8cdfc276b134
+	joinOnDateBehavior: datePartOnly
+	fromColumn: f_MateriaisRetirados.'Último Movimento Data'
+	toColumn: LocalDateTable_e531521c-29e0-4cbd-acc4-67d752e98bf4.Date
+
+relationship AutoDetected_c801d84a-ff30-42ad-8e5a-f9d9f3d010ec
+	fromColumn: f_SituaçãoMateriaisSaldoVolante.'Cod. Material'
+	toColumn: d_ListagemProdutos.'Cód.Material'
+
+relationship 3036ce75-9187-de01-221b-83d6001cdea9
+	fromColumn: f_MateriaisAplicados.'Cód. Equipe'
+	toColumn: d_ListagemEquipes.Equipe
+
+relationship 9a982ad2-e9b7-8987-3af5-ef2de9c19b07
+	fromColumn: f_SaldoEstoque.Descrição
+	toColumn: d_DE-PARA-TECNOLOGIA.EQUIPAMENTO
+
+relationship 7d0f249e-57c7-428d-9c29-e15745a374f0
+	joinOnDateBehavior: datePartOnly
+	fromColumn: f_Backlog.'Data/Hora Criação'
+	toColumn: LocalDateTable_4270335a-3bc8-4c25-9f9a-73b8d56222c9.Date
+
+relationship 804e86ef-3fe0-49a7-a28e-44ea5135a844
+	joinOnDateBehavior: datePartOnly
+	fromColumn: f_Backlog.'Data Instalação Equip.'
+	toColumn: LocalDateTable_3214fae5-33ba-45e3-83fc-15e9f655a9b5.Date
+
+relationship 6636e6c0-7e24-40d9-8387-7228268fd86d
+	joinOnDateBehavior: datePartOnly
+	fromColumn: f_InventarioFisico.'Data Inicial'
+	toColumn: LocalDateTable_879ea78a-8ef0-43c3-95da-e36507348d8f.Date
+
+relationship ab605c9d-1221-438b-93de-8c07fb93dad0
+	joinOnDateBehavior: datePartOnly
+	fromColumn: f_InventarioFisico.'Data Final'
+	toColumn: LocalDateTable_39a02517-0f41-43d9-8008-52449d3f682b.Date
+
+relationship ede3d6ad-41fd-425a-802c-1be202e07fd1
+	joinOnDateBehavior: datePartOnly
+	fromColumn: f_InventarioFisico.'DataHora Baixa'
+	toColumn: LocalDateTable_2b57718c-3be0-4833-84ea-98cd7da29c03.Date
+
+relationship 5e54e043-bab9-d58f-7bd0-5520c1acb244
+	fromColumn: f_InventarioFisico.Data
+	toColumn: d_Calendário.Data
+
+relationship 9e7a696b-c2eb-4907-a57c-ab6822d309c4
+	joinOnDateBehavior: datePartOnly
+	fromColumn: f_InventarioFisico.'Data Conv. Posterior ao Inventario'
+	toColumn: LocalDateTable_be8ffa8d-9194-40fe-b10f-88deb6c3d5b4.Date
+
+relationship 3c93d5fd-633a-4747-8f02-5ccc4f5c74e9
+	joinOnDateBehavior: datePartOnly
+	fromColumn: f_InventarioFisico.'Último Movimento Data'
+	toColumn: LocalDateTable_e6aac5b9-1786-4572-a9fd-dac988300a9d.Date
+
+relationship 5d2fc64f-2b1e-a9cd-e439-35f6018019d9
+	fromColumn: f_RM&DM.'data Movimentação'
+	toColumn: d_Calendário.Data
+
+relationship fc5ef9d9-3199-7112-f68c-cd031221c57e
+	fromColumn: f_ConversaoProdutos.'Dia Criação'
+	toColumn: d_Calendário.Data
+
+relationship 28495394-11be-57e6-4604-e4867a405498
+	fromColumn: f_MateriaisRetirados.'Cód. Equipe'
+	toColumn: d_ListagemEquipes.Equipe
+
+relationship 1613f540-c3ff-f592-83a6-1f7fb71caeff
+	fromColumn: f_RM&DM.Matrícula
+	toColumn: d_ListagemEquipes.Equipe
+
+relationship 6994316f-1bbe-6ce2-4f1a-c62e75b3c630
+	fromColumn: f_MateriaisAplicados.Material
+	toColumn: d_DE-PARA-TECNOLOGIA.EQUIPAMENTO
+
+relationship fcd60f6d-2e94-4ea2-75da-5b6dd975563f
+	fromColumn: f_RM&DM.Material
+	toColumn: d_DE-PARA-TECNOLOGIA.EQUIPAMENTO
+
+relationship bdf24ce1-ec32-4ce8-b926-e95791844fe3
+	joinOnDateBehavior: datePartOnly
+	fromColumn: f_Solicitacoes.'Data/Hora Criação'
+	toColumn: LocalDateTable_651304ab-e45c-4a63-bada-353eba3f8e0e.Date
+
+relationship c13ae3a4-9d40-4d85-a2d3-8912421dd1b8
+	joinOnDateBehavior: datePartOnly
+	fromColumn: f_Solicitacoes.'Data/Hora Encerramento'
+	toColumn: LocalDateTable_7089dae6-5fe1-4ee5-810c-f2787544ebe0.Date
+
+relationship 62326cc7-00d8-4441-2a41-f9f9229f788d
+	fromColumn: f_Solicitacoes.'Data Baixa OS'
+	toColumn: d_Calendário.Data
+
+relationship bde67532-60af-996a-1cb7-adabc975f3cb
+	fromColumn: f_Solicitacoes.'Tipo de Serviço'
+	toColumn: d_DE-PARA-SERVIÇO.'DESC. TIPO SERV.'
+
+relationship f894cc61-63dc-47cf-49dc-c5d2f32e4254
+	isActive: false
+	fromColumn: f_MateriaisRetirados.'Data Mov. Post. Retirada'
+	toColumn: d_Calendário.Data
+

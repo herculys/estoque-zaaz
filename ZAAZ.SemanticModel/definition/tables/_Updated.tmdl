@@ -1,0 +1,38 @@
+table _Updated
+	lineageTag: 720497c8-c50c-4371-a6e5-2e5c99f3d150
+
+	measure Atualização = "Atualização dos Dados: "& MAX(_Updated[DataHoraAtualização])
+		lineageTag: f6cdc184-2ae6-4e28-8c55-9583482f5625
+
+	measure Report = "RELATÓRIO DE ESTOQUE | "& FORMAT(MAX(_Updated[DataHoraAtualização]), "dd/mm/yyyy")
+		lineageTag: f8e15edc-00da-4d3f-a512-29dd0c262dbd
+
+	column DataHoraAtualização
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 4b84677c-0a98-4679-ae11-3da31a5d76e3
+		summarizeBy: none
+		sourceColumn: DataHoraAtualização
+
+		variation Variation
+			isDefault
+			relationship: fece9d76-2fee-4bae-acc8-a689125bfe63
+			defaultHierarchy: LocalDateTable_f3027e81-cc0e-454e-9835-5efc34915420.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition _Updated = m
+		mode: import
+		source =
+				let
+				    Fonte = #table(
+				        type table [DataHoraAtualização = datetime],
+				        {{ DateTime.LocalNow() }}
+				    )
+				in
+				    Fonte
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

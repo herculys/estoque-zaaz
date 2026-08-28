@@ -1,0 +1,514 @@
+table f_Solicitacoes
+	lineageTag: 59e581b1-7133-4163-92b4-8ee5b4c3b2d0
+
+	column Contrato
+		dataType: string
+		lineageTag: 1044fb1b-90ef-4f32-a30a-f0b454215d71
+		summarizeBy: none
+		sourceColumn: Contrato
+
+		annotation SummarizationSetBy = Automatic
+
+	column Projeto
+		dataType: string
+		lineageTag: f8ec8490-e55c-45ef-a4cd-beb8e78b8cf7
+		summarizeBy: none
+		sourceColumn: Projeto
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Nº. Ordem Serviço'
+		dataType: string
+		lineageTag: 22793b0e-baa9-48cb-92cc-6f0d0b1c6d58
+		summarizeBy: none
+		sourceColumn: Nº. Ordem Serviço
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Matrícula do Técnico'
+		dataType: string
+		lineageTag: 0e389382-1fba-478d-819b-11ed90484abb
+		summarizeBy: none
+		sourceColumn: Matrícula do Técnico
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Identificação do Cliente'
+		dataType: string
+		lineageTag: 82e68729-cd85-4e1c-8949-280ee539f0ca
+		summarizeBy: none
+		sourceColumn: Identificação do Cliente
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Nº Cliente'
+		dataType: string
+		lineageTag: 13ed9eed-85f6-45c3-8c11-7e1d999c4666
+		summarizeBy: none
+		sourceColumn: Nº Cliente
+
+		annotation SummarizationSetBy = Automatic
+
+	column Status
+		dataType: string
+		lineageTag: c18244e0-b392-4798-88dd-0a063a69ebea
+		summarizeBy: none
+		sourceColumn: Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Tipo de Serviço'
+		dataType: string
+		lineageTag: c221a328-bd13-4e12-918b-a5634f633f71
+		summarizeBy: none
+		sourceColumn: Tipo de Serviço
+
+		annotation SummarizationSetBy = Automatic
+
+	column Área
+		dataType: string
+		lineageTag: 05070933-0a93-426c-b6cc-baf2eaeb90b0
+		summarizeBy: none
+		sourceColumn: Área
+
+		annotation SummarizationSetBy = Automatic
+
+	column Endereço
+		dataType: string
+		lineageTag: 4f011358-5460-41a6-842a-4b53605ae04e
+		summarizeBy: none
+		sourceColumn: Endereço
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Subtipo de Serviço'
+		dataType: string
+		lineageTag: 5afc90c5-15c5-4a2d-acd6-e08ee5ee6cec
+		summarizeBy: none
+		sourceColumn: Subtipo de Serviço
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Grupo Área'
+		dataType: string
+		lineageTag: 2a991fbe-906e-4306-8265-4b18f8d3b8aa
+		summarizeBy: none
+		sourceColumn: Grupo Área
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Data/Hora Criação'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 8abdf2f3-d399-474b-be1e-e425fc734735
+		summarizeBy: none
+		sourceColumn: Data/Hora Criação
+
+		variation Variation
+			isDefault
+			relationship: bdf24ce1-ec32-4ce8-b926-e95791844fe3
+			defaultHierarchy: LocalDateTable_651304ab-e45c-4a63-bada-353eba3f8e0e.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Descrição do Encerramento'
+		dataType: string
+		lineageTag: 69d0aebf-89b2-4973-8e52-0d5488dce0ba
+		summarizeBy: none
+		sourceColumn: Descrição do Encerramento
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Usuário do Encerramento'
+		dataType: string
+		lineageTag: 2f59b0d9-aeca-4f92-93ee-9d54ff3d19a6
+		summarizeBy: none
+		sourceColumn: Usuário do Encerramento
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Data/Hora Encerramento'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: dddb6de7-7e02-4500-95df-ea25644334d9
+		summarizeBy: none
+		sourceColumn: Data/Hora Encerramento
+
+		variation Variation
+			isDefault
+			relationship: c13ae3a4-9d40-4d85-a2d3-8912421dd1b8
+			defaultHierarchy: LocalDateTable_7089dae6-5fe1-4ee5-810c-f2787544ebe0.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Natureza
+		dataType: string
+		lineageTag: 924c70e0-468d-4bd4-98d4-4e2e042d839c
+		summarizeBy: none
+		sourceColumn: Natureza
+
+		annotation SummarizationSetBy = Automatic
+
+	column Observação
+		dataType: string
+		lineageTag: 00702fc1-5750-41df-8676-6d12e399e805
+		summarizeBy: none
+		sourceColumn: Observação
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Velocidade do Plano'
+		dataType: int64
+		formatString: 0
+		lineageTag: 52c0d58c-2978-4101-8044-0c4a9a525ea4
+		summarizeBy: sum
+		sourceColumn: Velocidade do Plano
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Velocidade Agrupada' =
+			
+			
+			VAR velocidade = f_Solicitacoes[Velocidade do Plano]
+			RETURN
+			SWITCH(
+			    TRUE(),
+			    velocidade >= 1 && velocidade < 300, "001MB - 299MB",
+			    velocidade >= 300 && velocidade <= 599, "300MB - 599MB",
+			    velocidade >= 600 && velocidade <= 1000, "600MB - 1GB",
+			    velocidade > 1000 && velocidade <= 2000, "2GB+",
+			    "NÃO IDENTIFICADO"
+			)
+		lineageTag: 1c54ebc7-ad1e-45d2-b8a0-72d67ddc5da8
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Data Baixa OS'
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 0f8b0b9e-bdc5-43dc-be81-bb63274344ca
+		summarizeBy: none
+		sourceColumn: Data Baixa OS
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Material Aplicado OS' =
+			VAR OSAtual = 'f_Solicitacoes'[Nº. Ordem Serviço]
+			VAR Materiais =
+			    SELECTCOLUMNS(
+			        FILTER(
+			            'f_MateriaisAplicados',
+			            'f_MateriaisAplicados'[OS] = OSAtual
+			                && UPPER(TRIM('f_MateriaisAplicados'[Serializado?])) = "SIM"
+			                && NOT ISBLANK('f_MateriaisAplicados'[Material])
+			        ),
+			        "Material", 'f_MateriaisAplicados'[Material]
+			    )
+			RETURN
+			    IF(
+			        ISBLANK(OSAtual),
+			        BLANK(),
+			        CONCATENATEX(Materiais, [Material], ", ", [Material], ASC)
+			    )
+		lineageTag: 7ee31c65-6c71-4710-b5f0-8011d2cb1dae
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Nº. Serie OS' =
+			VAR OSAtual = 'f_Solicitacoes'[Nº. Ordem Serviço]
+			VAR Seriais =
+			    DISTINCT(
+			        SELECTCOLUMNS(
+			            FILTER(
+			                'f_MateriaisAplicados',
+			                'f_MateriaisAplicados'[OS] = OSAtual
+			                    && UPPER(TRIM('f_MateriaisAplicados'[Serializado?])) = "SIM"
+			                    && NOT ISBLANK('f_MateriaisAplicados'[N° Serie])
+			            ),
+			            "Serie", 'f_MateriaisAplicados'[N° Serie]
+			        )
+			    )
+			RETURN
+			    IF(
+			        ISBLANK(OSAtual),
+			        BLANK(),
+			        CONCATENATEX(Seriais, [Serie], ", ", [Serie], ASC)
+			    )
+		lineageTag: bce0b119-ec15-4540-9f31-6c1990d60d74
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Qtd. Aplic. OS' =
+			VAR OSAtual = 'f_Solicitacoes'[Nº. Ordem Serviço]
+			RETURN
+			    IF(
+			        ISBLANK(OSAtual),
+			        BLANK(),
+			        CALCULATE(
+			            SUM('f_MateriaisAplicados'[Qtde. Aplic.]),
+			            'f_MateriaisAplicados'[OS] = OSAtual,
+			            UPPER(TRIM('f_MateriaisAplicados'[Serializado?])) = "SIM"
+			        )
+			    )
+		formatString: 0
+		lineageTag: 1f0a953b-4341-46a2-aea1-0f4158cd15fc
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column 'Tipo de Plano' =
+			SWITCH(
+			    TRUE(),
+			    f_Solicitacoes[Velocidade do Plano] > 0 && f_Solicitacoes[Velocidade do Plano] < 300, "WIFI 5",
+			    f_Solicitacoes[Velocidade do Plano] >= 300 && f_Solicitacoes[Velocidade do Plano] <= 2000, "WIFI 6",
+			    "SEM INFORMAÇÃO PLANO"
+			)
+		lineageTag: f5e2f4cf-ece4-4891-9890-c3c154f1e27b
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'CATEGORIA APLICADA OS' =
+			VAR OSAtual = 'f_Solicitacoes'[Nº. Ordem Serviço]
+			VAR MateriaisAplicados =
+			    FILTER(
+			        'f_MateriaisAplicados',
+			        'f_MateriaisAplicados'[OS] = OSAtual
+			            && UPPER(TRIM('f_MateriaisAplicados'[Serializado?])) = "SIM"
+			            && NOT ISBLANK('f_MateriaisAplicados'[Material])
+			    )
+			VAR CategoriasBase =
+			    ADDCOLUMNS(
+			        MateriaisAplicados,
+			        "Categoria",
+			            LOOKUPVALUE(
+			                'd_DE-PARA-TECNOLOGIA'[CATEGORIA],
+			                'd_DE-PARA-TECNOLOGIA'[EQUIPAMENTO],
+			                'f_MateriaisAplicados'[Material]
+			            )
+			    )
+			VAR CategoriasValidas =
+			    FILTER(CategoriasBase, NOT ISBLANK([Categoria]))
+			VAR CategoriasUnicas =
+			    DISTINCT(
+			        SELECTCOLUMNS(
+			            CategoriasValidas,
+			            "CategoriaResumo", [Categoria]
+			        )
+			    )
+			VAR CategoriasComQtde =
+			    ADDCOLUMNS(
+			        CategoriasUnicas,
+			        "Qtde",
+			            VAR CategoriaAtual = [CategoriaResumo]
+			            RETURN
+			                COUNTROWS(
+			                    FILTER(
+			                        CategoriasValidas,
+			                        [Categoria] = CategoriaAtual
+			                    )
+			                )
+			    )
+			RETURN
+			    IF(
+			        ISBLANK(OSAtual),
+			        BLANK(),
+			        IF(
+			            COUNTROWS(MateriaisAplicados) = 0,
+			            BLANK(),
+			            IF(
+			                COUNTROWS(CategoriasValidas) = 0,
+			                "NÃO MAPEADO",
+			                CONCATENATEX(
+			                    CategoriasComQtde,
+			                    [CategoriaResumo] & " (" & [Qtde] & ")",
+			                    ", ",
+			                    [CategoriaResumo],
+			                    ASC
+			                )
+			            )
+			        )
+			    )
+		lineageTag: fae0cecd-4a30-41d1-a3d0-ae0ff123a534
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'CONFORMIDADE APLICAÇÃO' = ```
+			VAR CategoriaAplicadaOS = TRIM(COALESCE('f_Solicitacoes'[CATEGORIA APLICADA OS], ""))
+			VAR TipoPlano = UPPER(TRIM(COALESCE('f_Solicitacoes'[Tipo de Plano], "")))
+			VAR Velocidade = 'f_Solicitacoes'[Velocidade do Plano]
+			VAR OSAtual = 'f_Solicitacoes'[Nº. Ordem Serviço]
+			VAR MateriaisOS =
+			    FILTER(
+			        'f_MateriaisAplicados',
+			        'f_MateriaisAplicados'[OS] = OSAtual
+			            && UPPER(TRIM('f_MateriaisAplicados'[Serializado?])) = "SIM"
+			            && NOT ISBLANK('f_MateriaisAplicados'[Material])
+			    )
+			VAR MateriaisComCategoria =
+			    ADDCOLUMNS(
+			        MateriaisOS,
+			        "Categoria",
+			            LOOKUPVALUE(
+			                'd_DE-PARA-TECNOLOGIA'[CATEGORIA],
+			                'd_DE-PARA-TECNOLOGIA'[EQUIPAMENTO],
+			                'f_MateriaisAplicados'[Material]
+			            )
+			    )
+			VAR MateriaisMapeados =
+			    FILTER(
+			        MateriaisComCategoria,
+			        NOT ISBLANK([Categoria])
+			    )
+			VAR TemMateriais = COUNTROWS(MateriaisOS) > 0
+			VAR TemMaterialNaoMapeado = COUNTROWS(MateriaisComCategoria) <> COUNTROWS(MateriaisMapeados)
+			VAR QtdeONTWifi6 = COUNTROWS(FILTER(MateriaisMapeados, [Categoria] = "ONT WIFI 6"))
+			VAR QtdeRoteadorWifi6 = COUNTROWS(FILTER(MateriaisMapeados, [Categoria] = "ROTEADOR WIFI 6"))
+			VAR QtdeRadio = COUNTROWS(FILTER(MateriaisMapeados, [Categoria] = "RADIO"))
+			VAR QtdeONT5G = COUNTROWS(FILTER(MateriaisMapeados, [Categoria] = "ONT 5G"))
+			VAR QtdeRoteador5G = COUNTROWS(FILTER(MateriaisMapeados, [Categoria] = "ROTEADOR 5G" || [Categoria] = "ONU + ROT 5G"))
+			VAR QtdeONU = COUNTROWS(FILTER(MateriaisMapeados, [Categoria] = "ONU"))
+			VAR QtdeObsoleto = COUNTROWS(FILTER(MateriaisMapeados, [Categoria] = "OBSOLETO"))
+			VAR MESH3RConforme = --3R
+			    NOT TemMaterialNaoMapeado
+			        && (
+			            (QtdeONTWifi6 = 1 && QtdeONU = 0 && QtdeRoteadorWifi6 = 2) || 
+			            (QtdeONTWifi6 = 0 && QtdeONU = 1 && QtdeRoteadorWifi6 = 3)
+			        )
+			        && QtdeRadio = 0
+			        && QtdeONT5G = 0
+			        && QtdeRoteador5G = 0
+			VAR MESH2RConforme = --2R
+			    NOT TemMaterialNaoMapeado
+			        && (
+			            (QtdeONTWifi6 = 1 && QtdeONU = 0  && QtdeRoteadorWifi6 = 1) || 
+			            (QtdeONTWifi6 = 0 && QtdeONU = 1 && QtdeRoteadorWifi6 = 2)
+			        )
+			        && QtdeRadio = 0
+			        && QtdeONT5G = 0
+			        && QtdeRoteador5G = 0
+			VAR MESHConforme = --1R
+			    NOT TemMaterialNaoMapeado
+			        && (
+			            (QtdeONTWifi6 = 1 && QtdeONU = 0  && QtdeRoteadorWifi6 = 1) || 
+			            (QtdeONTWifi6 = 0 && QtdeONU = 1 && QtdeRoteadorWifi6 = 2)
+			        )
+			        && QtdeRadio = 0
+			        && QtdeONT5G = 0
+			        && QtdeRoteador5G = 0
+			VAR Wifi6Conforme =
+			    NOT TemMaterialNaoMapeado
+			        && (
+			            (QtdeONTWifi6 = 1 && QtdeONU = 0 && QtdeRoteadorWifi6 = 0) ||
+			            (QtdeONTWifi6 = 0 && QtdeONU = 1 && QtdeRoteadorWifi6 = 1)
+			        )
+			        && QtdeRadio = 0
+			        && QtdeONT5G = 0
+			        && QtdeRoteador5G = 0
+			        && QtdeObsoleto = 0
+			VAR Wifi5Conforme =
+			    NOT TemMaterialNaoMapeado
+			        && (
+			            (QtdeONT5G = 1 && QtdeONU = 0 && QtdeRoteador5G = 0) ||
+			            (QtdeONT5G = 0 && QtdeONU = 1 && QtdeRoteador5G = 1)
+			        )
+			        && QtdeONTWifi6 = 0
+			        && QtdeRoteadorWifi6 = 0
+			        && QtdeRadio = 0
+			        && QtdeObsoleto = 0
+			VAR RadioConforme =
+			    NOT TemMaterialNaoMapeado
+			        && QtdeRadio = 1
+			        && QtdeONTWifi6 = 0
+			        && QtdeRoteadorWifi6 = 0
+			        && QtdeONT5G = 0
+			        && QtdeRoteador5G = 0
+			        && QtdeONU = 0
+			VAR SemInformacao =
+			    (TipoPlano = "" || TipoPlano = "SEM INFORMAÇÃO PLANO")
+			        && ISBLANK(Velocidade)
+			RETURN
+			    IF(
+			        CategoriaAplicadaOS = "",
+			        BLANK(),
+			        IF(
+			            SemInformacao,
+			            "SEM INFORMAÇÃO",
+			            IF(
+			                NOT TemMateriais,
+			                "NÃO CONFORME",
+			                SWITCH(
+			                    TRUE(),
+			                    TipoPlano = "WIFI 6 MESH 3R", IF(MESH3RConforme, "CONFORME", "NÃO CONFORME"),
+			                    TipoPlano = "WIFI 6 MESH 2R", IF(MESH2RConforme, "CONFORME", "NÃO CONFORME"),
+			                    CONTAINSSTRING(TipoPlano, "WIFI 6 MESH"), IF(MESHConforme, "CONFORME", "NÃO CONFORME"),
+			                    TipoPlano = "WIFI 6", IF(Wifi6Conforme, "CONFORME", "NÃO CONFORME"),
+			                    TipoPlano = "WIFI 5", IF(Wifi5Conforme, "CONFORME", "NÃO CONFORME"),
+			                    TipoPlano = "RÁDIO", IF(RadioConforme, "CONFORME", "NÃO CONFORME"),
+			                    "NÃO CONFORME"
+			                )
+			            )
+			        )
+			    )
+			```
+		lineageTag: eb90465f-85f7-4ded-9ad9-8702e925053e
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Categoria Aplicada Agrupada' =
+			
+			
+			SWITCH(
+			    TRUE(),
+			    CONTAINSSTRING(f_Solicitacoes[CATEGORIA APLICADA OS], "ONT WIFI 6") || CONTAINSSTRING(f_Solicitacoes[CATEGORIA APLICADA OS], "ROTEADOR WIFI 6"), "WIFI 6",
+			    CONTAINSSTRING(f_Solicitacoes[CATEGORIA APLICADA OS], "ONT 5G") || CONTAINSSTRING(f_Solicitacoes[CATEGORIA APLICADA OS], "ROTEADOR 5G"), "WIFI 5",
+			    CONTAINSSTRING(f_Solicitacoes[CATEGORIA APLICADA OS], "OBSOLETO"), "OBSOLETO",
+			    CONTAINSSTRING(f_Solicitacoes[CATEGORIA APLICADA OS], "ONU"), "BRIDGE",
+			    CONTAINSSTRING(f_Solicitacoes[CATEGORIA APLICADA OS], "RADIO"), "RADIO",
+			    "Tecnologia Não Mapeada"
+			)
+		lineageTag: 50e80d4c-a0f5-48a1-8d17-a25467a1aabd
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Responsável
+		dataType: string
+		lineageTag: 084fc3df-ac19-4bba-ac6d-43ce90ad9b61
+		summarizeBy: none
+		sourceColumn: Responsável
+
+		annotation SummarizationSetBy = Automatic
+
+	partition f_Solicitacoes = m
+		mode: import
+		queryGroup: 'Transformar Arquivo de Solicitações'
+		source =
+				let
+				  Origem = Folder.Files("C:\Users\proxx\OneDrive\Área de Trabalho\ZAAZ\Estoque\Solicitações"),
+				    #"Arquivos Ocultos Filtrados1" = Table.SelectRows(Origem, each [Attributes]?[Hidden]? <> true),
+				    #"Invocar Função Personalizada1" = Table.AddColumn(#"Arquivos Ocultos Filtrados1", "Transformar Arquivo (6)", each #"Transformar Arquivo (6)"([Content])),
+				    #"Colunas Renomeadas1" = Table.RenameColumns(#"Invocar Função Personalizada1", {"Name", "Nome da Origem"}),
+				    #"Outras Colunas Removidas1" = Table.SelectColumns(#"Colunas Renomeadas1", {"Nome da Origem", "Transformar Arquivo (6)"}),
+				    #"Coluna de Tabela Expandida1" = Table.ExpandTableColumn(#"Outras Colunas Removidas1", "Transformar Arquivo (6)", Table.ColumnNames(#"Transformar Arquivo (6)"(#"Arquivo de Amostra (6)"))),
+				    #"Colunas Removidas" = Table.RemoveColumns(#"Coluna de Tabela Expandida1",{"Nome da Origem", "CPF/CNPJ do Cliente", "N° da Venda", "Nº Atendimento", "Responsabilidade", "Pontos Previstos", "Pontos Realizados", "SLA", "Tipo de Imóvel", "Supervisor", "Localidade", "Cliente", "Número", "Complemento", "Bairro", "Cidade", "UF", "País", "Telefone Principal", "Telefone Celular", "Usuário de Abertura OS", "Data/Hora Abertura Original", "Usuário do Agendamento", "Data/Hora do Agendamento", "Deslocamento", "Início Atendimento", "Final Atendimento", "Data/Hora Deslocamento", "Data/Hora Início do Atendimento", "Data/Hora Pausa Atendimento", "Data/Hora Reinício Atendimento", "Data/Hora Fim do Atendimento", "Status Auditoria", "Data/Hora Venc. O.S.", "Atendimento Finalizado", "Categoria do Cliente", "Monitor", "Plano/Produto", "Período", "Motivo Paralisação", "Latitude/Longitude", "Quantidade Reabertura", "WO", "Tem Os Digital ?", "Departamento", "Tipo Prioridade", "Status da Cobrança", "Segmento", "TECNICO AUXILIAR", "Observação do Técnico"}),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Colunas Removidas",{{"Velocidade do Plano", Int64.Type}, {"Data/Hora Criação", type datetime}, {"Data/Hora Encerramento", type datetime}}),
+				    #"Coluna Duplicada" = Table.DuplicateColumn(#"Tipo Alterado", "Data/Hora Encerramento", "Data/Hora Encerramento - Copiar"),
+				    #"Colunas Renomeadas" = Table.RenameColumns(#"Coluna Duplicada",{{"Data/Hora Encerramento - Copiar", "Data Baixa OS"}}),
+				    #"Tipo Alterado1" = Table.TransformColumnTypes(#"Colunas Renomeadas",{{"Data Baixa OS", type date}})
+				in
+				    #"Tipo Alterado1"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

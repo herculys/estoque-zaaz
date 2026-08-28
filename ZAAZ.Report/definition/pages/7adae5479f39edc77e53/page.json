@@ -1,0 +1,151 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "7adae5479f39edc77e53",
+  "displayName": "Aplicados Detalhado",
+  "displayOption": "FitToPage",
+  "height": 1080,
+  "width": 1920,
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "0d1a751a0fb70788b9d1",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "f_MateriaisAplicados"
+              }
+            },
+            "Property": "Qtde. Aplic."
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough",
+        "isLockedInViewMode": true
+      },
+      {
+        "name": "2e0ef2464b0900911035",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "f_SaldoVolante"
+              }
+            },
+            "Property": "Qtde. Aplic. Novo"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough"
+      },
+      {
+        "name": "116bd50db82d57bd7391",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "f_SaldoVolante"
+              }
+            },
+            "Property": "Qtde. Aplic. REAP"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough"
+      }
+    ]
+  },
+  "pageBinding": {
+    "name": "b829bc3ac4d0abb45e37",
+    "type": "Drillthrough",
+    "parameters": [
+      {
+        "name": "2e1621d6cdb4d7cb6a47",
+        "boundFilter": "0d1a751a0fb70788b9d1",
+        "asAggregation": true,
+        "fieldExpr": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "f_MateriaisAplicados"
+              }
+            },
+            "Property": "Qtde. Aplic."
+          }
+        }
+      },
+      {
+        "name": "0f43a6c9ed23a09ac0c8",
+        "boundFilter": "2e0ef2464b0900911035",
+        "fieldExpr": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "f_SaldoVolante"
+              }
+            },
+            "Property": "Qtde. Aplic. Novo"
+          }
+        }
+      },
+      {
+        "name": "ea32baace4c6550abcbd",
+        "boundFilter": "116bd50db82d57bd7391",
+        "fieldExpr": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "f_SaldoVolante"
+              }
+            },
+            "Property": "Qtde. Aplic. REAP"
+          }
+        }
+      }
+    ],
+    "referenceScope": "CrossReport"
+  },
+  "objects": {
+    "background": [
+      {
+        "properties": {
+          "image": {
+            "image": {
+              "name": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'background.png'"
+                  }
+                }
+              },
+              "url": {
+                "expr": {
+                  "ResourcePackageItem": {
+                    "PackageName": "RegisteredResources",
+                    "PackageType": 1,
+                    "ItemName": "background0727578028974053.png"
+                  }
+                }
+              },
+              "scaling": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'Fit'"
+                  }
+                }
+              }
+            }
+          },
+          "transparency": {
+            "expr": {
+              "Literal": {
+                "Value": "0D"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "visibility": "HiddenInViewMode"
+}

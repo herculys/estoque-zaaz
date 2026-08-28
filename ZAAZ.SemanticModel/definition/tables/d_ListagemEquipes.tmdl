@@ -1,0 +1,78 @@
+table d_ListagemEquipes
+	lineageTag: 4540e014-232c-44ec-b32b-05de8dcc3a82
+
+	column Equipe
+		dataType: string
+		lineageTag: 099bd16d-346b-489e-be11-bc678ba6bdbc
+		summarizeBy: none
+		sourceColumn: Equipe
+
+		annotation SummarizationSetBy = Automatic
+
+	column Nome
+		dataType: string
+		lineageTag: fd7f48bc-f950-416e-bd72-17068eb38c5c
+		summarizeBy: none
+		sourceColumn: Nome
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Código Perfil'
+		dataType: int64
+		formatString: 0
+		lineageTag: 23291934-7c54-4b3f-9f6e-539234e36643
+		summarizeBy: sum
+		sourceColumn: Código Perfil
+
+		annotation SummarizationSetBy = Automatic
+
+	column Perfil
+		dataType: string
+		lineageTag: d371a2f9-f85b-4a31-9b6a-b20d3f9fee0a
+		summarizeBy: none
+		sourceColumn: Perfil
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Cod. Supervisor'
+		dataType: string
+		lineageTag: 2b38f9f0-8698-48ca-b86f-a285b7f3dfd3
+		summarizeBy: none
+		sourceColumn: Cod. Supervisor
+
+		annotation SummarizationSetBy = Automatic
+
+	column Supervisor
+		dataType: string
+		lineageTag: cf9d23ee-6587-4350-bce7-b82dea2f8878
+		summarizeBy: none
+		sourceColumn: Supervisor
+
+		annotation SummarizationSetBy = Automatic
+
+	column Função
+		dataType: string
+		lineageTag: f4426fbd-94d9-4f5a-a8bc-56e56c6d6369
+		summarizeBy: none
+		sourceColumn: Função
+
+		annotation SummarizationSetBy = Automatic
+
+	partition d_ListagemEquipes = m
+		mode: import
+		queryGroup: 'DE PARA'
+		source =
+				let
+				    Fonte = Excel.Workbook(File.Contents(#"Pasta Raiz" & "\Listagem Equipes Cadastradas\Listagem Equipes Cadastradas.xlsx"), null, true),
+				    SINAPSE_Sheet = Fonte{[Item="SINAPSE",Kind="Sheet"]}[Data],
+				    #"Linhas Superiores Removidas" = Table.Skip(SINAPSE_Sheet,1),
+				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(#"Linhas Superiores Removidas", [PromoteAllScalars=true]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"Equipe", type text}, {"Nome", type text}, {"Código Perfil", Int64.Type}, {"Perfil", type text}, {"Cod. Supervisor", type any}, {"Supervisor", type any}, {"Cod. Fornec.", type any}, {"Nome Fornec.", type any}, {"Nome da Região", type text}, {"Encerramento", type any}, {"Nº FRE", type text}, {"Função", type text}, {"CPF", type text}, {"Data Admissão", type date}, {"Data Demissão", type any}, {"Situação", type text}, {"Mobile Habilitado", type text}}),
+				    #"Colunas Removidas" = Table.RemoveColumns(#"Tipo Alterado",{"Data Admissão", "Data Demissão", "Mobile Habilitado", "Situação", "CPF", "Nº FRE", "Cod. Fornec.", "Nome Fornec.", "Nome da Região", "Encerramento"})
+				in
+				    #"Colunas Removidas"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

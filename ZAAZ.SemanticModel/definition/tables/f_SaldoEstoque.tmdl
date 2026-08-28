@@ -1,0 +1,151 @@
+table f_SaldoEstoque
+	lineageTag: 6ec3ae8f-cf48-4570-9174-b4037e93357c
+
+	column 'Tipo Saldo'
+		dataType: string
+		lineageTag: c59e494d-bcb9-468d-b913-1e2811518d9a
+		summarizeBy: none
+		sourceColumn: Tipo Saldo
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Grupo
+		dataType: string
+		lineageTag: 21ebd2ff-10fa-4194-b51c-d617c8af8679
+		summarizeBy: none
+		sourceColumn: Grupo
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Codmat
+		dataType: string
+		lineageTag: a012387b-e63e-4b4b-8469-3150c8b22a53
+		summarizeBy: none
+		sourceColumn: Codmat
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Descrição
+		dataType: string
+		lineageTag: 289be2a2-ca78-45c8-87ec-5d47c39ed80f
+		summarizeBy: none
+		sourceColumn: Descrição
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Unid
+		dataType: string
+		lineageTag: e691ea0d-03ad-469a-814f-931893d56013
+		summarizeBy: none
+		sourceColumn: Unid
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Saldo em Estoque'
+		dataType: int64
+		formatString: 0
+		lineageTag: 4e8b72b0-637a-49c3-bb00-0f051a92a387
+		summarizeBy: sum
+		sourceColumn: Saldo em Estoque
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Prog. RM'
+		dataType: int64
+		formatString: 0
+		lineageTag: 4e0f6efc-fc7d-4bf1-90bc-f02ba2684f96
+		summarizeBy: sum
+		sourceColumn: Prog. RM
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Prog. TM'
+		dataType: int64
+		formatString: 0
+		lineageTag: bfccd9cc-8dea-40ad-8e15-e8cb0e1ecce7
+		summarizeBy: sum
+		sourceColumn: Prog. TM
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Saldo Disponível'
+		dataType: int64
+		formatString: 0
+		lineageTag: b36bf720-3945-4c29-8b21-3785862da601
+		summarizeBy: sum
+		sourceColumn: Saldo Disponível
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column CATEGORIA
+		dataType: string
+		lineageTag: 3abe00f0-2f9b-45a5-9b53-4c383fcb314e
+		summarizeBy: none
+		sourceColumn: CATEGORIA
+
+		annotation SummarizationSetBy = Automatic
+
+	column CONDIÇÃO
+		dataType: string
+		lineageTag: a4c2a4ef-1ae0-42d8-9f8e-840545ed0e55
+		summarizeBy: none
+		sourceColumn: CONDIÇÃO
+
+		annotation SummarizationSetBy = Automatic
+
+	partition f_SaldoEstoque = m
+		mode: import
+		queryGroup: Estoque
+		source = ```
+				let
+				    Fonte = Excel.Workbook(File.Contents(#"Pasta Raiz" & "\saldo\Localizar Saldo de Material em Estoque.xlsx"), null, true),
+				    SINAPSE_Sheet = Fonte{[Item="SINAPSE",Kind="Sheet"]}[Data],
+				    #"Tipo Alterado" = Table.TransformColumnTypes(SINAPSE_Sheet,{{"Column1", type text}, {"Column2", type text}, {"Column3", type text}, {"Column4", type text}, {"Column5", type text}, {"Column6", type text}, {"Column7", type text}, {"Column8", type text}, {"Column9", type text}, {"Column10", type text}, {"Column11", type text}, {"Column12", type text}, {"Column13", type text}, {"Column14", type text}, {"Column15", type text}}),
+				    #"Linhas Superiores Removidas" = Table.Skip(#"Tipo Alterado",1),
+				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(#"Linhas Superiores Removidas", [PromoteAllScalars=true]),
+				    #"Tipo Alterado1" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"Tipo Saldo", type text}, {"Grupo", type text}, {"Codmat", type text}, {"Descrição", type text}, {"Descrição Auxiliar", type text}, {"Unid", type text}, {"Codcpl", type text}, {"Saldo em Estoque", Int64.Type}, {"Prog. RM", Int64.Type}, {"Prog. TM", Int64.Type}, {"Valor", type number}, {"Cod. Grupo Material", Int64.Type}, {"Grupo de Material", type text}, {"Saldo Disponível", Int64.Type}}),
+				    #"Colunas Removidas" = Table.RemoveColumns(#"Tipo Alterado1",{"Descrição Auxiliar", "Codcpl", "Cód. Mat. Auxiliar", "Cód. Cpl. Auxiliar", "Valor", "Cod. Grupo Material", "Grupo de Material"}),
+				    #"Consultas Mescladas" = Table.NestedJoin(#"Colunas Removidas", {"Descrição"}, #"d_DE-PARA-TECNOLOGIA", {"EQUIPAMENTO"}, "d_DE-PARA-TECNOLOGIA", JoinKind.LeftOuter),
+				    #"d_DE-PARA-TECNOLOGIA Expandido" = Table.ExpandTableColumn(#"Consultas Mescladas", "d_DE-PARA-TECNOLOGIA", {"CATEGORIA"}, {"d_DE-PARA-TECNOLOGIA.CATEGORIA"}),
+				    #"Valor Substituído" = Table.ReplaceValue(#"d_DE-PARA-TECNOLOGIA Expandido",null,"NÃO MAPEADO",Replacer.ReplaceValue,{"d_DE-PARA-TECNOLOGIA.CATEGORIA"}),
+				    Condição = Table.AddColumn(#"Valor Substituído", "CONDIÇÃO", each 
+				    let 
+				        Cod = Text.Upper(Text.From([Descrição])) 
+				    in
+				        if Text.Contains(Cod, "DEF-") or Text.Contains(Cod, "DET-") then "DEFEITO"
+				        else if Text.Contains(Cod, "RET-") then "RETIRADO"
+				        else if Text.Contains(Cod, "REAP-") or Text.Contains(Cod, "REA-") then "REAPROVEITADO"
+				        else if Text.Contains(Cod, "SUC-") then "DESUSO"
+				        else if [Descrição] <> null and [Descrição] <> "" then "NOVO"
+				        else "VAZIO"
+				    ),
+				    #"Colunas Renomeadas" = Table.RenameColumns(Condição,{{"d_DE-PARA-TECNOLOGIA.CATEGORIA", "CATEGORIA"}}),
+				    #"Tipo Alterado2" = Table.TransformColumnTypes(#"Colunas Renomeadas",{{"CONDIÇÃO", type text}})
+				in
+				    #"Tipo Alterado2"
+				```
+
+	changedProperty = IsHidden
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

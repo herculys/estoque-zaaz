@@ -1,0 +1,35 @@
+table d_DE-PARA-SERVIÇO
+	lineageTag: 10a83d2d-5ce0-4fa4-8582-b85e3ec11547
+
+	column 'DESC. TIPO SERV.'
+		dataType: string
+		lineageTag: 637da61d-f328-4d0e-be56-95097021545e
+		summarizeBy: none
+		sourceColumn: DESC. TIPO SERV.
+
+		annotation SummarizationSetBy = Automatic
+
+	column CATEGORIA
+		dataType: string
+		lineageTag: 425f5396-c795-4277-9c47-afe5ffe681e4
+		summarizeBy: none
+		sourceColumn: CATEGORIA
+
+		annotation SummarizationSetBy = Automatic
+
+	partition d_DE-PARA-SERVIÇO = m
+		mode: import
+		queryGroup: 'DE PARA'
+		source =
+				let
+				    Fonte = Excel.Workbook(File.Contents(#"Pasta Raiz" & "\DE PARA ZAAZ.xlsx"), null, true),
+				    #"DE PARA SERVIÇO_Sheet" = Fonte{[Item="DE PARA SERVIÇO",Kind="Sheet"]}[Data],
+				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(#"DE PARA SERVIÇO_Sheet", [PromoteAllScalars=true]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"DESC. TIPO SERV.", type text}, {"CATEGORIA", type text}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+
